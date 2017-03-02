@@ -1,0 +1,189 @@
+\input{header.tex}
+
+\title{Solutions Sheet 1}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+\item
+	~ 
+	\begin{enumerate}[label = \alph*),wide = 0pt, itemsep=1.5ex]
+		\item It is well known, that the set $M_2(\mathbb{R})$ is a ring with identity. It is also clear, that the given set together with the usual operations constitutes a subring with identity of $M_2(\mathbb{R})$. Therefore it is enough to show commutativity and the existence of inverse elements regarding multiplication. Let $x,y,x',y' \in \mathbb{R}$. Then we have
+\begin{align*}
+	\begin{pmatrix}
+		x & y\\
+		-y & x
+	\end{pmatrix}
+	\begin{pmatrix}
+		x' & y'\\
+		-y' & x'
+	\end{pmatrix}
+	&= \begin{pmatrix}
+		xx' -yy' & xy'+yx'\\
+		-yx'-xy' & -yy'+xx'
+	\end{pmatrix}\\
+	&= \begin{pmatrix}
+		x'x-y'y & x'y +y'x\\
+		-y'x-x'y & -y'y+x'x
+	\end{pmatrix}\\
+	&= \begin{pmatrix}
+		x' & y'\\
+		-y' & x'
+	\end{pmatrix}
+	\begin{pmatrix}
+		x & y\\
+		-y & x
+	\end{pmatrix}
+\end{align*}
+
+Since $\mathbb{R}$ is a field. Furthermore we have
+\begin{equation}
+	\det\begin{pmatrix}
+		x & y\\
+		-y & x
+	\end{pmatrix} = x^2 + y^2
+\end{equation}
+
+Hence $\begin{pmatrix}
+		x & y\\
+		-y & x
+	\end{pmatrix}$ is invertible if and only if $(x,y) \neq (0,0)$, which means that every non-zero element is invertible. Thus the set constitutes a field under the given operations. Now define a mapping $\iota$ by
+	\begin{equation}
+	\iota(x + iy) := \begin{pmatrix}
+		x & y\\
+		-y & x
+	\end{pmatrix}
+	\label{eq:iso}
+	\end{equation}
+
+	We have 
+	\begin{equation*}
+		\iota((x + iy) + (u + iv)) = \begin{pmatrix}
+			x + u & y + v\\
+			-y-v & x + u
+		\end{pmatrix} = \begin{pmatrix}
+		x & y\\
+		-y & x
+	\end{pmatrix} + \begin{pmatrix}
+		u & v\\
+		-v & u
+	\end{pmatrix} = \iota(x + iy) + \iota(u + iv)
+	\end{equation*}
+
+	\noindent and 
+	\begin{equation*}
+		\iota((x + iy)(u +iv)) = \begin{pmatrix}
+		xu - yv & xv + uy\\
+		-xv-uy & xu-yv
+	\end{pmatrix} = \begin{pmatrix}
+		x & y\\
+		-y & x
+	\end{pmatrix}\begin{pmatrix}
+		u & v\\
+		-v & u
+	\end{pmatrix}
+	= \iota(x + iy)\iota(u +iv).
+	\end{equation*}
+
+	Obviously $\ker(\iota) = \cbr[0]{0}$ and $\iota$ is surjective, hence $\iota$ is an isomorphism of fields.
+
+\item Consider the abelian group $(\mathbb{C},\cdot)$. We show $(S^1, \cdot) \leq (\mathbb{C},\cdot)$, where
+	\begin{equation*}
+		S^1 := \partial\mathbb{E} = \cbr[0]{z \in \mathbb{C} : \abs[0]{z} = 1}.
+	\end{equation*}
+	Clearly $1 \in S^1$. If $z,z' \in S^1$, we have $\abs[0]{z} = \abs[0]{z'} = 1$ and therefore $\abs[0]{zz'} = \abs[0]{z}\abs[0]{z'} = 1$ which implies $zz' \in S^1$. Also we have $\abs[0]{1/z} = 1/\abs[0]{z} = 1$ for $z \in S^1$ which implies $1/z \in S^1$. With the terminology established in (\ref{eq:iso}) we consider the restriction
+	\begin{equation}
+		\iota\vert_{S^1}: S^1 \to \iota(S^1)
+	\end{equation}
+
+	\noindent which is an isomorphism of groups. We will show that 
+	\begin{equation}
+		\iota(S^1) = \operatorname{SO}(2).
+	\end{equation}
+
+	Let $x + iy \in S^1$. Then $1 = \abs[0]{x + iy}^2 = x^2 + y^2$ and so
+	\begin{equation*}
+		\iota(x + iy)(\iota(x + iy))^t = \begin{pmatrix}
+		x & y\\
+		-y & x
+	\end{pmatrix}\begin{pmatrix}
+		x & -y\\
+		y & x
+	\end{pmatrix} = \begin{pmatrix}
+		x^2 + y^2 & -xy + yx\\
+		-yx + xy & x^2 + y^2
+	\end{pmatrix} = \begin{pmatrix}
+		1 & 0\\
+		0 & 1
+	\end{pmatrix}.
+	\end{equation*}
+
+	Since $\iota(S^1)$ is a subgroup of the abelian group in a), we have also that $(\iota(x + iy))^t\iota(x + iy)$ is the identity matrix. Also $\det(\iota(x + iy)) = x^2 + y^2 = 1$ so $\iota(S^1) \subseteq \operatorname{SO}(2)$. Now we have 
+	\begin{equation*}
+		\operatorname{SO}(2) = \cbr[3]{\begin{pmatrix}
+		\cos \varphi & -\sin \varphi\\
+		\sin\varphi & \cos \varphi
+	\end{pmatrix} : \varphi \in \mathbb{R}}
+	\end{equation*}
+
+	By 
+	\begin{equation*}
+		\begin{pmatrix}
+		\cos \varphi & -\sin \varphi\\
+		\sin\varphi & \cos \varphi
+	\end{pmatrix} = \begin{pmatrix}
+		\cos (-\varphi) & \sin (-\varphi)\\
+		-\sin(-\varphi) & \cos (-\varphi)
+	\end{pmatrix}
+	\end{equation*}
+
+	\noindent we have 
+	\begin{equation*}
+		\iota(\cos(-\varphi) + i\sin(-\varphi)) = \begin{pmatrix}
+		\cos (-\varphi) & \sin (-\varphi)\\
+		-\sin(-\varphi) & \cos (-\varphi)
+	\end{pmatrix}
+	\end{equation*}
+
+	\noindent and with
+	\begin{equation*}
+		\abs[0]{\cos(-\varphi) + i\sin(-\varphi)}^2 = \cos^2(-\varphi) + \sin^2(-\varphi) = 1 
+	\end{equation*}
+
+	\noindent this implies $\operatorname{SO}(2) \subseteq \iota(S^1)$.
+	\end{enumerate}
+\item See separate sheet.
+\item Clearly $\varnothing \in \mathcal{Z}$ and $\mathbb{C} \in \mathcal{Z}$ since $\mathbb{C}^c = \varnothing$ which is finite. Let $U,V \in \mathcal{Z}$. Then $U^c$ and $V^c$ are both finite and so is
+	\begin{equation*}
+		(U \cap V)^c = U^c \cup V^c.
+	\end{equation*}
+
+	Hence $U \cap V \in \mathcal{Z}$. Let $(U_\alpha)_{\alpha \in A}$ be a sequence in $\mathcal{Z}$. Then we have that $U_\alpha^c$ is finite for any $\alpha \in A$. Therefore by
+\begin{equation*}
+	\del[4]{\bigcup_{\alpha \in A} U_\alpha}^c = \bigcap_{\alpha \in A} U_\alpha^c \subseteq U_{\beta}^c
+\end{equation*}
+for any $\beta \in A$ we have that $\bigcup_{\alpha \in A}U_\alpha \in \mathcal{Z}$. Hence $(\mathbb{C},\mathcal{Z})$ is a topological space. We show the following result:
+\begin{lemma}
+	Let $X$ be an infinite set. Then $(X,\mathcal{Z})$ is not Hausdorff.
+\end{lemma}
+
+\begin{proof}
+	Towards a contradiction assume that $(X,\mathcal{Z})$ is Hausdorff. Hence for any $p,q \in X$ we find (open) neighbourhoods $U$ of $p$ and $V$ of $q$ such that $U \cap V = \varnothing$. Thus $U^c$ is finite and since $U \cap V = \varnothing$ we have that $U \subseteq V^c$ and thus $U$ is finite. But this would imply that 
+	\begin{equation*}
+		X = U \cup U^c
+	\end{equation*}
+	\noindent is the union of finite sets which would mean that $X$ itself is finite. Contradiction.
+\end{proof}
+
+\item We use the terminology established in \cite[8--16]{fischer2005funktionentheorie} which results in considering a function $f: M \to \mathbb{C}$. We show the implications (i) $\Rightarrow$ (ii) $\Rightarrow$ (iii) $\Rightarrow$ (i).\\
+	Assume $f$ is continuous in $z^* \in M$ and fix $\varepsilon > 0$. Now consider the set $B_\varepsilon(f(z^*))$ which is a neighbourhood of $f(z^*)$. By (i) there exists a neighbourhood $U$ of $z^*$ such that $f(U \cap M) \subseteq B_\varepsilon(f(z^*))$. Since $U$ is a neighbourhood of $z^*$ it contains a $\delta$-neighbourhood $B_\delta(z^*)$ of $z^*$.\\
+	Assume that (ii) holds. Let $(z_\nu)_{\nu \in \mathbb{N}}$ be a sequence in $M$ such that $z_\nu \to z^*$ and $U$ be any neighbourhood of $f(z^*)$. Since $U$ is a neighbourhood of $f(z^*)$ it contains a $\varepsilon$-neighbourhood $B_\varepsilon(f(z^*))$. By (ii) we find $\delta > 0$ such that $z \in B_\delta(z^*)$ implies $f(z) \in B_\varepsilon(f(z^*))$. Since $z_\nu \to z^*$ we also have $z_\nu \in B_\delta(z^*)$ for almost all $z_\nu$. In conclusion, $f(z_\nu) \in U$ for almost all $f(z_\nu)$.\\ 
+	Assume that (iii) holds. Towards a contradiction assume that (i) does not hold. Hence there exists a neighbourhood $V$ of $f(z^*)$ such that for any neighbourhood $U$ of $z^*$ we have $f(U \cap M) \not\subseteq V$. The latter means that $z \in f(U \cap M)$ but $z \notin V$ for some $z$. Consider the sets $B_{1/\nu}(z^*)$ for $\nu \in \mathbb{N}_{>0}$. They are clearly neighbourhoods of $z^*$. Now by assumption, for any $\nu \in \mathbb{N}_{>0}$ there is some $f(z_\nu) \in f(B_{1/\nu}(z^*) \cap M)$ which is not in $V$. This defines a sequence $(z_\nu)_{n \in \mathbb{N}_{>0}}$ in $M$. We claim that $z_\nu \to z^*$. Indeed, if we have any neighbourhood $U$ of $z^*$ we find by definition an $\varepsilon$-neighbourhood $B_\varepsilon(z^*) \subseteq U$. But by the archimidean principle we have  $1/\nu < \varepsilon$ for $\nu$ small enough, thus $z_\nu \in B_\varepsilon(z^*)$ for almost all $\nu$. Now $z_\nu \to z^*$ but clearly $f(z_\nu) \not\to f(z^*)$ since none of the $z_\nu$ is in $V$. Contradiction.  
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
