@@ -148,18 +148,34 @@ Since evidently $G = G_1 \cup G_1^c$ and by lemma \ref{lem:G_1} and \ref{lem:G_1
 
 	\noindent since $G_2^c$ is closed and $G_1 \cap G_2 = \varnothing$.
 
-\item
-	\emph{Well-definedness.} We have to show that $h(\mathbb{H}) \subseteq \mathbb{E}$. Let $z \in \mathbb{H}$. Then $\Im(z) > 0$ and thus
+\item The proof is given as a sequence of lemmata.
+	\begin{lemma}
+		The mapping $h$ is well-defined, i.e. $h(\mathbb{H}) \subseteq \mathbb{E}$.
+		\label{lem:well_defined}
+	\end{lemma}
+
+	\begin{proof}
+		 Let $z \in \mathbb{H}$. Then $\Im(z) > 0$ and thus
 	\begin{align*}
 		\abs[3]{\frac{z - i}{z + i}}^2 &= \frac{(z - i)(\overline{z} + i)}{(z + i)(\overline{z} - i)}\\
-		&= \frac{\abs[0]{z}^2 + i(z - \overline{z}) + 1}{\abs[0]{z}^2 + i(z - \overline{z}) + 1}\\
+		&= \frac{\abs[0]{z}^2 + i(z - \overline{z}) + 1}{\abs[0]{z}^2 + i( \overline{z} - z) + 1}\\
 		&= \frac{\abs[0]{z}^2 -2 \Im (z) + 1}{\abs[0]{z}^2 + 2\Im(z) + 1}\\
 		&\leq \frac{\abs[0]{z}^2 -2 \Im (z) + 1}{\abs[0]{z}^2 + 1}\\
 		&= 1 - \frac{2\Im(z)}{\abs[0]{z}^2 + 1}\\
 		& < 1.
 	\end{align*}
+	\end{proof}
+	
+	\begin{lemma}
+		The mapping $h$ is invertible with inverse
+		\begin{equation}
+			h^{-1}: \mathbb{E} \to \mathbb{H}, w \mapsto i\frac{1 + w}{1 - w}.
+		\end{equation}
+		\label{lem:invertible}
+	\end{lemma}
 
-	\emph{Existence of an inverse.} Let $z \in \mathbb{H}$. Then we have 
+	\begin{proof}
+	Let $z \in \mathbb{H}$. Then we have 
 	\begin{equation}
 		1 + h(z) = \frac{2z}{z + i} \qquad \text{and} \qquad 1 - h(z) = \frac{2i}{z + i}.
 	\end{equation}
@@ -169,27 +185,40 @@ Since evidently $G = G_1 \cup G_1^c$ and by lemma \ref{lem:G_1} and \ref{lem:G_1
 		\frac{1 + h(z)}{1 - h(z)} = \frac{z}{i} \qquad \Leftrightarrow \qquad z = i\frac{1 + h(z)}{1 - h(z)}.
 	\end{equation}
 
-	This quotient is well-defined since $h(z) \neq 1$ for $z \in \mathbb{H}$. Now let $w \in \mathbb{E}$. Then
+	This quotient is well-defined since $h(z) \neq 1$ for $z \in \mathbb{H}$. Thus consider the mapping
+	\begin{equation*}
+		g: \mathbb{E} \to \mathbb{C}, w \mapsto i\frac{1 + w}{1 - w}.	
+	\end{equation*}
+	
+	Now let $w \in \mathbb{E}$. Then
 	\begin{align*}
 		\Im\del[3]{i\frac{1 + w}{1 - w}} &= \frac{1}{2i}\sbr[3]{i\frac{1 + w}{1 - w} + i\frac{1 + \overline{w}}{1 - \overline{w}}}\\
-		&= \frac{1}{2}\frac{2 + (w + \overline{w})}{1 - (w + \overline{w}) + \abs[0]{w}^2}\\
-		&> \frac{1}{2}\frac{1 + \Re(w)}{1 - \Re(w)}\\
+		&= \frac{1 - \abs[0]{w}^2}{1 - (w + \overline{w}) + \abs[0]{w}^2}\\
+		&= \frac{1 - \abs[0]{w}^2}{1 - 2\Re(w) + \abs[0]{w}^2}\\
+		&\geq \frac{1 - \abs[0]{w}^2}{\del[0]{1 + \abs[0]{w}}^2}\\
+		&= \frac{1 - \abs[0]{w}}{1 + \abs[0]{w}}\\
 		&> 0
 	\end{align*}
 
-	\noindent since $\abs[0]{\Re(w)} \leq \abs[0]{w} < 1$. Hence the mapping
-	\begin{equation}
-		g: \mathbb{E} \to \mathbb{H}, w \mapsto i\frac{1 + w}{1 - w}
-	\end{equation}
-
-	\noindent is well-defined. Furthermore, for $z \in \mathbb{H}$ and $w \in \mathbb{E}$ we have
+	\noindent since $\abs[0]{\Re(w)} \leq \abs[0]{w} < 1$. Hence $g(\mathbb{E}) \subseteq \mathbb{H}$. Furthermore, for $z \in \mathbb{H}$ and $w \in \mathbb{E}$ we have
 	\begin{equation*}
 		g(h(z)) = i\frac{1 + (z - i)/(z + i)}{1 - (z - i)/(z + i)} = z \qquad \text{and} \qquad h(g(w)) = \frac{(1 + w)/(1-w)- 1}{(1 + w)/(1-w) + 1} = w.
 	\end{equation*}
 
-	Therefore $g = h^{-1}$.
+	Therefore $g = h^{-1}$.	
+	\end{proof}
+	
+	\begin{lemma}
+		It holds that $h \in \mathcal{O}(\mathbb{H})$ and $h^{-1} \in \mathcal{O}(\mathbb{E})$.
+		\label{lem:holo}
+	\end{lemma}
 
-	\emph{Holomorphy of $h$ and $h^{-1}$.} The functions $h$ and $h^{-1}$ are clearly holomorphic on $\mathbb{H}$ and $\mathbb{E}$ respectively since they are well-defined rational functions there.
+	\begin{proof}
+		$h$ aswell as $h^{-1}$ are well-defined rational functions, hence holomorphic in their respective domains.		
+	\end{proof}
+	
+	By lemma \ref{lem:well_defined}, \ref{lem:invertible} and \ref{lem:holo} we conclude that the Cayley-map is biholomorphic. 
+
 \item
 	First we consider the function $f$. We can decompose $f = u + iv$ where $u,v: \mathbb{C} \to \mathbb{R}$ are defined by
 	\begin{equation}
