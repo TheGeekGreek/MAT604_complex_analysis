@@ -79,8 +79,8 @@
 	\item By $\del[0]{\cbr[0]{z_0}^c}^c = \cbr[0]{z_0}$ which is finite immediately follows $\cbr[0]{z_0}^c \in \mathcal{Z}$. But $\cbr[0]{z_0}^c = \mathbb{C} \setminus \cbr[0]{z_0}$ is clearly not finite, thus $\cbr[0]{z_0} \notin \mathcal{Z}$, hence $\cbr[0]{z_0}^c$ cannot be closed. 
 	\end{enumerate}
 
-\item We show the equivalences (i) $\Leftrightarrow$ (ii) and (ii) $\Leftrightarrow$ (iii). This is due to the fact that I am aware of the latter equivalence by considering \cite[86]{lee:topological_manifolds:2011} and the first one by \cite[90]{lee:topological_manifolds:2011} and the fact that every open connected subset of $\mathbb{R}^n$ is path-connected. However, working out detailed and appropriate proofs is still alot of work.\\
-	Assume that (i) holds. Let $G = G_1 \cup G_2$ for some open sets $G_1,G_2 \subseteq \mathbb{C}$ with $G_1 \cap G_2 = \varnothing$. Towards a contradiction assume that $G_1,G_2 \neq \varnothing$, hence we find $p \in G \cap G_1$, $q \in G \cap G_2$. Let $\gamma: \intcc{a,b} \to G$ be a path with joins $p$ and $q$, i.e. $\gamma(a) = p$ and $\gamma(b) = q$. Since $\gamma$ is continuous, $G \cap G_1$ and $G \cap G_2$ are relatively open in $G$ we have that $\gamma^{-1}(G \cap G_1)$ and $\gamma^{-1}(G \cap G_2)$ are open in $\intcc{a,b}$. Furthermore, since $a \in \gamma^{-1}(G \cap G_1)$ and $b \in \gamma^{-1}(G \cap G_2)$ we have that both preimages are non-empty. By
+\item Let $G \subseteq \mathbb{C}$ be non-empty and open. We show the equivalences (i) $\Leftrightarrow$ (ii) and (ii) $\Leftrightarrow$ (iii). This is due to the fact that I am aware of the latter equivalence by considering \cite[86]{lee:topological_manifolds:2011} and the first one by \cite[90]{lee:topological_manifolds:2011} and the fact that every open connected subset of $\mathbb{R}^n$ is path-connected. However, working out detailed and appropriate proofs is still alot of work.\\
+	Assume that (i) holds. Proof by contradiction. Let $G = G_1 \cup G_2$ for some open sets $G_1,G_2 \subseteq \mathbb{C}$ with $G_1 \cap G_2 = \varnothing$ and $G_1,G_2 \neq G$. Evidently $G_1,G_2 \neq \varnothing$ and thus we find $p \in G \cap G_1$, $q \in G \cap G_2$. Let $\gamma: \intcc{a,b} \to G$ be a path joining $p$ and $q$, i.e. $\gamma(a) = p$ and $\gamma(b) = q$. Since $\gamma$ is continuous, $G \cap G_1$ and $G \cap G_2$ are relatively open in $G$ we have that $\gamma^{-1}(G \cap G_1)$ and $\gamma^{-1}(G \cap G_2)$ are open in $\intcc{a,b}$. Furthermore, since $a \in \gamma^{-1}(G \cap G_1)$ and $b \in \gamma^{-1}(G \cap G_2)$ we have that both preimages are non-empty. By
 	\begin{equation*}
 		\gamma^{-1}(G \cap G_1) \cup \gamma^{-1}(G \cap G_2) = \gamma^{-1}((G \cap G_1) \cup (G \cap G_2)) = \gamma^{-1}(G) = \intcc{a,b}
 	\end{equation*}
@@ -90,7 +90,7 @@
 		\gamma^{-1}(G \cap G_1) \cap \gamma^{-1}(G \cap G_2) = \gamma^{-1}((G \cap G_1) \cap (G \cap G_2)) = \gamma^{-1}(\varnothing) = \varnothing  
 	\end{equation*}
 	
-	Hence $\gamma^{-1}(G \cap G_1)$ and $\gamma^{-1}(G \cap G_2)$ disconnect $\intcc{a,b}$ which is impossible since a real interval is connected (see \cite[89]{lee:topological_manifolds:2011}).\\
+	\noindent we have that $\gamma^{-1}(G \cap G_1)$ and $\gamma^{-1}(G \cap G_2)$ disconnect $\intcc{a,b}$ which is impossible since a real interval is always connected (see \cite[89]{lee:topological_manifolds:2011}).\\
 
 	Now assume that (ii) holds. Let $z_0 \in G$. Since joinability by paths in $G$ is an equivalence relation (let us denote it simply by $\sim$) define
 	\begin{equation}
@@ -102,21 +102,19 @@
 		\end{lemma}
 
 	\begin{proof}
-		Let $z_1 \in G_1$. Since $G$ is open we find $\varepsilon > 0$ such that $B_\varepsilon(z_1) \subseteq G$. $B_\varepsilon(z_1)$ is evidently path connected (consider just straight lines joining different points). Since $z_1 \in G_1$, we have that there is a path joining $z_0$ and $z_1$. Therefore there is a path from $z_0$ to every point in $B_\varepsilon(z_1)$ and thus $B_\varepsilon(z_1) \subseteq G_1$.
+		Let $z_1 \in G_1$. Since $G$ is open we find $\varepsilon > 0$ such that $B_\varepsilon(z_1) \subseteq G$. $B_\varepsilon(z_1)$ is evidently path connected (consider just straight lines joining different points). Since $z_1 \in G_1$, we have that there is a path joining $z_0$ and $z_1$. By concatenating paths, there is a path from $z_0$ to every point in $B_\varepsilon(z_1)$ and thus $B_\varepsilon(z_1) \subseteq G_1$.
 	\end{proof}
 
-	\begin{mdframed}
 		\begin{lemma}
-			$G_1^c$ is open (relative complement in $G$).
+			The relative complement $G_1^c$ in $G$ is open.
 			\label{lem:G_1^c}
 		\end{lemma}
-	\end{mdframed}
 
 	\begin{proof}
 	Let $z_1 \in G_1^c$. Again we find $\varepsilon > 0$ such that $B_\varepsilon(z_1) \subseteq G$ by the openness of $G$. Towards a contradiction assume that $B_\varepsilon(z_1) \cap G_1 \neq \varnothing$. Hence we find $z_2 \in B_\varepsilon(z_1) \cap G_1$. This means, that there is a path joining $z_0$ and $z_2$. But since $B_\varepsilon(z_1)$ is path connected there would be a path joining $z_1$ and $z_0$ which yields a contradiction. Hence $B_\varepsilon(z_1) \subseteq G_1^c$. 
 \end{proof}
 
-Now $G_1 \neq \varnothing$ since $z_0 \in G_1$ and evidently $G_1 \cap G_1^c = \varnothing$. Therefore, by lemma \ref{lem:G_1} and \ref{lem:G_1^c} and (ii) we get $G = G_1$. Therefore $G$ is a single equivalence class under joinability by paths, hence path connecte.\\
+Since evidently $G = G_1 \cup G_1^c$ and by lemma \ref{lem:G_1} and \ref{lem:G_1^c} $G_1$, $G_1^c$ are open and clearly disjoint, (ii) implies that either $G_1 = G$ or $G_1^c = G$. The latter is impossible since $z_0 \notin G_1^c$. Hence we conclude that $G = G_1$. Thus $G$ is a single equivalence class under joinability by paths, hence path-connected.\\
 	Next we show that (ii) $\Rightarrow$ (iii). To be completely rigorous, we state the following lemma which can be found as an exercise in \cite[50]{lee:topological_manifolds:2011}.
 	\begin{lemma}
 		Let $(X,\mathcal{T})$ be a topological space and $S \subseteq X$. Then $B \subseteq S$ is closed in $S$ if and only if $B = S \cap A$ for some closed set $A$ in $X$.
@@ -124,12 +122,12 @@ Now $G_1 \neq \varnothing$ since $z_0 \in G_1$ and evidently $G_1 \cap G_1^c = \
 	\end{lemma}
 
 	\begin{proof}
-		Assume $B \subseteq S$ is closed in $S$. Hence $B^c$ is closed in $S$ (where we consider the complement in $S$). Therefore we have $B^c = S \cap U$ for some open set $U$ in $X$. Thus
+		Assume $B \subseteq S$ is closed in $S$. Hence the relative complement $B^c$ is open in $S$. Therefore we have $B^c = S \cap U$ for some open set $U$ in $X$. Thus
 		\begin{equation*}
 			B = (S \cap U)^c = S \cap (S \cap U)^c = S \cap (S^c \cup U^c) = (S \cap S^c) \cup (S \cap U^c) = S \cap U^c.
 		\end{equation*}
 
-		But since $U$ is open in $X$ we have that $U^c$ is closed in $X$. Conversly assume that $B = S \cap A$ for some closed set $A$ in $X$. Then
+		But since $U$ is open in $X$ we have that $U^c$ is closed in $X$. Conversly assume that $B = S \cap A$ for some closed set $A$ in $X$. Taking relative complements yields
 		\begin{equation*}
 			B^c = (S \cap A)^c = S \cap (S \cap A)^c = S \cap A^c
 		\end{equation*}
@@ -139,16 +137,16 @@ Now $G_1 \neq \varnothing$ since $z_0 \in G_1$ and evidently $G_1 \cap G_1^c = \
 
 	Now assume that (ii) holds. Let $U \subseteq G$ be a non-empty, open and relatively closed (with respect to $G$) subset. Since $U$ is relatively closed, by lemma \ref{lem:subspaceclosed} there exists a closed set $A \subseteq \mathbb{C}$ such that $U = G \cap A$. Observe, that by
 	\begin{equation*}
-		U^c = (G \cap A)^c = G \cap (G \cap A)^c = G \cap (G^c \cup A^c) = G \cap A^c
+		U^c = G \cap (G \cap A)^c = G \cap (G^c \cup A^c) = G \cap A^c
 	\end{equation*}
 
-	\noindent $U^c$ is open in $\mathbb{C}$ since $G$ and $A^c$ are open in $\mathbb{C}$ and so is $G \cap A^c$. Thus $G = U \cup U^c$ for some open disjoint sets. From (ii) we conclude that either $U = G$ or $U^c = G$ where in the latter case $U = \varnothing$ follows from $\varnothing = U \cap U^c = U \cap G = U$, which contradicts the assumption $U \neq \varnothing$. Hence we conclude that $U = G$.\\
-	Now we show (iii) $\Rightarrow$ (ii). This is equivalent to showing that not (ii) implies not (iii). So we have $G = G_1 \cup G_2$ for some open disjoint sets $G_1, G_2 \subseteq \mathbb{C}$ where $G_1,G_2 \neq G$. Now clearly $G_1 \subseteq G$, $G_1 \neq \varnothing$, $G_1$ open and $G_1$ relatively closed in $G$ since
+	\noindent $U^c$ is open in $\mathbb{C}$ since $G$ and $A^c$ are open in $\mathbb{C}$. Clearly, $G = U \cup U^c$ and $U \cap U^c = \varnothing$. Therefore (ii) implies that either $U = G$ or $U^c = G$ where the latter is impossible since by assumption $U \neq \varnothing$. Hence we conclude that $U = G$.\\
+	Finally we show (iii) $\Rightarrow$ (ii). This is equivalent to showing that not (ii) implies not (iii). So we have $G = G_1 \cup G_2$ for some open disjoint sets $G_1, G_2 \subseteq \mathbb{C}$ where $G_1,G_2 \neq G$. Now clearly $\varnothing \subsetneq G_1 \subsetneq G$, $G_1$ is open and $G_1$ is relatively closed in $G$ since
 	\begin{equation*}
 		G \cap G_2^c = (G_1 \cup G_2) \cap G_2^c = G_1 \cap G_2^c = G_1
 	\end{equation*}
 
-	\noindent and furthermore $G_1 \neq G$.
+	\noindent since $G_2^c$ is closed and $G_1 \cap G_2 = \varnothing$.
 
 \item
 	\emph{Well-definedness.} We have to show that $h(\mathbb{H}) \subseteq \mathbb{E}$. Let $z \in \mathbb{H}$. Then $\Im(z) > 0$ and thus
