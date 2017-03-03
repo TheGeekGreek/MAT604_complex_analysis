@@ -12,7 +12,7 @@
 	\item 
 		~
 		\begin{enumerate}[label = (\roman*),wide = 10pt, itemsep=1.5ex]
-			\item We have already showed that $(\mathbb{C},\mathcal{Z})$ is not a Hausdorff space, hence not compact. Therefore it is enough to show that any open cover of $(\mathbb{C},\mathcal{Z})$ has a finite subcover. 
+			\item We have already showed that $(\mathbb{C},\mathcal{Z})$ is not a Hausdorff space (see sheet $1$ exercise $3$), hence not compact. Therefore it is enough to show that any open cover of $(\mathbb{C},\mathcal{Z})$ has a finite subcover. 
 					\begin{lemma}
 						$(\mathbb{C},\mathcal{Z})$ is quasi-compact.
 						\label{lem:finitecover}
@@ -24,39 +24,18 @@
 					\mathbb{C} = \bigcup_{\alpha \in A}U_\alpha \qquad \text{and} \qquad \forall \alpha \in A: U_\alpha \in \mathcal{Z}.
 				\end{equation}
 
-		We can explicitely construct a finite subcover. Pick some $\alpha_0 \in A$. Then $U_{\alpha_0} \in \mathcal{Z}$ and so $U_{\alpha_0}^c$ is finite, i.e. $U_{\alpha_0}^c = \cbr[0]{z_1,\dots,z_n}$. Thus we may write 
+				We can explicitely construct a finite subcover. Pick some $\alpha_0 \in A$ such that $U_{\alpha_0} \neq \varnothing$. Since $U_{\alpha_0} \in \mathcal{Z}$, $U_{\alpha_0}^c$ is finite, i.e. $U_{\alpha_0}^c = \cbr[0]{z_1,\dots,z_n} \subseteq \mathbb{C}$. Thus we can write 
 		\begin{equation}
 			\mathbb{C} = U_{\alpha_0} \cup U_{\alpha_0}^c = U_{\alpha_0} \cup \cbr[0]{z_1,\dots,z_n}.
 		\end{equation}
 
-		Since $\mathbb{C} = \bigcup_{\alpha \in A}U_\alpha$, we find $\alpha_i \in A$ for $i = 1,\dots,n$ such that $z_i \in U_{\alpha_i}$. Hence 		  \begin{equation}
-			\mathbb{C} = \bigcup_{\nu = 0}^n  U_{\alpha_\nu} \qquad \text{and} \qquad \forall \nu \in\cbr[0]{0,\dots,n}:U_{\alpha_\nu} \in \mathcal{Z}.	
-		\end{equation}
-
-		Since the construction was in general, we conclude that any open cover $(U_{\alpha})_{\alpha \in A}$ has a finite subcover $(U_{\alpha_\nu})_{\nu \in \cbr[0]{0,\dots,n}}$. 
+		Since $\mathbb{C} = \bigcup_{\alpha \in A}U_\alpha$, we find $\alpha_i \in A$ for $i = 1,\dots,n$ such that $z_i \in U_{\alpha_i}$. Hence $(U_{\alpha_\nu})_{\nu \in \cbr[0]{0,\dots,n}}$ is a finite subcover of $(U_\alpha)_{\alpha \in A}$. Since the construction was general, we conclude that $(\mathbb{C},\mathcal{Z})$ is quasi-compact. 
 	\end{proof}
-\item First we show that $(\cbr[0]{z_0}^c, \cbr[0]{z_0}^c \cap \mathcal{Z})$ is not Hausdorff and thus not compact.
-			\begin{lemma}
-				$(\cbr[0]{z_0}^c, \cbr[0]{z_0}^c \cap \mathcal{Z})$ is not Hausdorff.
-			\end{lemma}
-
-		\begin{proof}
-			Towards a contradiction assume that $(\cbr[0]{z_0}^c, \cbr[0]{z_0}^c \cap \mathcal{Z})$ is Hausdorff. Thus for $p,q \in \cbr[0]{z_0}$ there exists open neighbourhoods $U$ and $V$ of $p$ and $q$ respectively such that $U \cap V = \varnothing$. From the latter it follows that $U \subseteq V^c$. Since $V$ is open we find $W_1 \in \mathcal{Z}$ such that $V = \cbr[0]{z_0}^c \cap W_1$. Hence by
-			\begin{equation*}
-				V^c = \cbr[0]{z_0}^c \cap (\cbr[0]{z_0}^c \cap W_1)^c = \cbr[0]{z_0}^c \cap W_1^c \subseteq W_1^c
-			\end{equation*}
-
-			\noindent we have that $V^c$ is finite. Also since $U$ is open we have that there exists $W_2 \in \mathcal{Z}$ such that $U = \cbr[0]{z_0}^c \cap W_2$. Hence by 
-			\begin{equation*}
-				U^c = \cbr[0]{z_0}^c \cap (\cbr[0]{z_0} \cap W_2)^c = \cbr[0]{z_0}^c \cap W_2^c \subseteq W_2^c
-			\end{equation*}
-
-			\noindent it follows that $U^c$ is finite. Evidently $\cbr[0]{z_0}^c = U \cup U^c$ but $U \cup U^c$ is finite whereas $\cbr[0]{z_0}^c$ is clearly not.
-		\end{proof}
-
-			\begin{lemma}
-				$(\cbr[0]{z_0}^c, \cbr[0]{z_0}^c \cap \mathcal{Z})$ is quasi-compact.	
-			\end{lemma}
+\item The reasoning is similar to part i).
+		\begin{lemma}
+			$(\cbr[0]{z_0}^c, \cbr[0]{z_0}^c \cap \mathcal{Z})$ is quasi-compact.
+			\label{lem:z_0_quasi}
+		\end{lemma}
 
 		\begin{proof}
 			Let $(U_\alpha)_{\alpha \in A}$ be an open cover of $(\cbr[0]{z_0}^c, \cbr[0]{z_0}^c \cap \mathcal{Z})$, i.e. 
@@ -64,21 +43,42 @@
 					\cbr[0]{z_0}^c = \bigcup_{\alpha \in A}U_\alpha \qquad \text{and} \qquad \forall \alpha \in A: U_\alpha \in \cbr[0]{z_0}^c \cap \mathcal{Z}.
 				\end{equation}
 
-				We can explicitely construct a finite subcover. Pick some $\alpha_0 \in A$. Then $U_{\alpha_0} \in \cbr[0]{z_0}^c \cap \mathcal{Z}$ and so there exists $V \in \mathcal{Z}$ such that $U_{\alpha_0} = \cbr[0]{z_0}^c \cap V$. By considering $U_{\alpha_0}^c = \cbr[0]{z_0}^c \cap V^c$ and using the fact that $V^c$ is finite we conclude that $U_{\alpha_0}^c$ (relative complement in $\cbr[0]{z_0}^c$) is finite. i.e. $U_{\alpha_0}^c = \cbr[0]{z_1,\dots,z_n}$. Thus we can write 
+				We can explicitely construct a finite subcover. Pick some $\alpha_0 \in A$ such that $U_{\alpha_0} \ne \varnothing$. Since $U_{\alpha_0} \in \cbr[0]{z_0}^c \cap \mathcal{Z}$, there exists $V \in \mathcal{Z}$ such that $U_{\alpha_0} = \cbr[0]{z_0}^c \cap V$. By considering the relative complement
+				\begin{equation}
+					U_{\alpha_0}^c = \cbr[0]{z_0}^c \cap \del[0]{\cbr[0]{z_0}^c \cap V}^c = \cbr[0]{z_0}^c \cap (\cbr[0]{z_0} \cup V^c) = \cbr[0]{z_0}^c \cap V^c \subseteq V^c
+				\end{equation}
+				\noindent and using the fact that $V^c$ is finite we conclude that $U_{\alpha_0}^c$ is finite, i.e. $U_{\alpha_0}^c = \cbr[0]{z_1,\dots,z_n} \subseteq \cbr[0]{z_0}^c$. Thus we can write 
 		\begin{equation}
 			\cbr[0]{z_0}^c = U_{\alpha_0} \cup U_{\alpha_0}^c = U_{\alpha_0} \cup \cbr[0]{z_1,\dots,z_n}.
 		\end{equation}
 
-		Since $\cbr[0]{z_0}^c = \bigcup_{\alpha \in A}U_\alpha$, we find $\alpha_i \in A$ for $i = 1,\dots,n$ such that $z_i \in U_{\alpha_i}$. Hence 		  
-		\begin{equation}
-			\cbr[0]{z_0}^c = \bigcup_{\nu = 0}^n  U_{\alpha_\nu} \qquad \text{and} \qquad \forall \nu \in\cbr[0]{0,\dots,n}:U_{\alpha_\nu} \in \cbr[0]{z_0}^c \cap \mathcal{Z}.	
-		\end{equation}
+		Since $\cbr[0]{z_0}^c = \bigcup_{\alpha \in A}U_\alpha$, we find $\alpha_i \in A$ for $i = 1,\dots,n$ such that $z_i \in U_{\alpha_i}$. Hence $(U_{\alpha_\nu})_{\nu \in \cbr[0]{0,\dots,n}}$ is a finite subcover of $(U_\alpha)_{\alpha \in A}$. Since the construction was general, we conclude that $(\cbr[0]{z_0}^c, \cbr[0]{z_0}^c \cap \mathcal{Z})$ is quasi-compact. 
+	\end{proof}
 
-		Since the construction was in general, we conclude that any open cover $(U_{\alpha})_{\alpha \in A}$ has a finite subcover $(U_{\alpha_\nu})_{\nu \in \cbr[0]{0,\dots,n}}$. 
+		\begin{lemma}
+			$(\cbr[0]{z_0}^c, \cbr[0]{z_0}^c \cap \mathcal{Z})$ is not Hausdorff.
+			\label{lem:z_0_not_haus}
+		\end{lemma}
+
+		\begin{proof}
+			Towards a contradiction assume that $(\cbr[0]{z_0}^c, \cbr[0]{z_0}^c \cap \mathcal{Z})$ is Hausdorff. Thus for $p,q \in \cbr[0]{z_0}^c$ there exists open neighbourhoods $U$ and $V$ of $p$ and $q$ respectively such that $U \cap V = \varnothing$. From the latter it follows that $U \subseteq V^c$. Since $V$ is open we find $W_1 \in \mathcal{Z}$ such that $V = \cbr[0]{z_0}^c \cap W_1$. Hence taking relative complements yields 
+			\begin{equation*}
+				V^c = \cbr[0]{z_0}^c \cap (\cbr[0]{z_0}^c \cap W_1)^c = \cbr[0]{z_0}^c \cap W_1^c \subseteq W_1^c
+			\end{equation*}
+
+			\noindent So $V^c$ is finite and therefore also $U$. Since $U$ is open we have that there exists $W_2 \in \mathcal{Z}$ such that $U = \cbr[0]{z_0}^c \cap W_2$. Taking again relative complements yields 
+			\begin{equation*}
+				U^c = \cbr[0]{z_0}^c \cap (\cbr[0]{z_0}^c \cap W_2)^c = \cbr[0]{z_0}^c \cap W_2^c \subseteq W_2^c
+			\end{equation*}
+
+			\noindent So $U^c$ is also finite. Therefore the decomposition $\cbr[0]{z_0}^c = U \cup U^c$ implies that $\cbr[0]{z_0}^c$ is finite. Contradiction, since $\abs[0]{\cbr[0]{z_0}^c} \geq \abs[0]{\mathbb{R}} = \mathfrak{c}$, which is clearly not finite.
 		\end{proof}
+
+		Therefore by lemma \ref{lem:z_0_quasi} we conclude that $(\cbr[0]{z_0}^c, \cbr[0]{z_0}^c \cap \mathcal{Z})$ is quasi-compact, but from lemma \ref{lem:z_0_not_haus} follows that $(\cbr[0]{z_0}^c, \cbr[0]{z_0}^c \cap \mathcal{Z})$ is not compact.
 		
-	\item Let $z_0 \in \mathbb{C}$. By $\del[0]{\cbr[0]{z_0}^c}^c = \cbr[0]{z_0}$ which is finite we have $\cbr[0]{z_0}^c \in \mathcal{Z}$. But $\cbr[0]{z_0}^c = \mathbb{C} \setminus \cbr[0]{z_0}$ is clearly not finite, thus $\cbr[0]{z_0} \notin \mathcal{Z}$, hence $\cbr[0]{z_0}^c$ cannot be closed. 
+	\item By $\del[0]{\cbr[0]{z_0}^c}^c = \cbr[0]{z_0}$ which is finite immediately follows $\cbr[0]{z_0}^c \in \mathcal{Z}$. But $\cbr[0]{z_0}^c = \mathbb{C} \setminus \cbr[0]{z_0}$ is clearly not finite, thus $\cbr[0]{z_0} \notin \mathcal{Z}$, hence $\cbr[0]{z_0}^c$ cannot be closed. 
 	\end{enumerate}
+
 \item We show the equivalences (i) $\Leftrightarrow$ (ii) and (ii) $\Leftrightarrow$ (iii). This is due to the fact that I am aware of the latter equivalence by considering \cite[86]{lee:topological_manifolds:2011} and the first one by \cite[90]{lee:topological_manifolds:2011} and the fact that every open connected subset of $\mathbb{R}^n$ is path-connected. However, working out detailed and appropriate proofs is still alot of work.\\
 	Assume that (i) holds. Let $G = G_1 \cup G_2$ for some open sets $G_1,G_2 \subseteq \mathbb{C}$ with $G_1 \cap G_2 = \varnothing$. Towards a contradiction assume that $G_1,G_2 \neq \varnothing$, hence we find $p \in G \cap G_1$, $q \in G \cap G_2$. Let $\gamma: \intcc{a,b} \to G$ be a path with joins $p$ and $q$, i.e. $\gamma(a) = p$ and $\gamma(b) = q$. Since $\gamma$ is continuous, $G \cap G_1$ and $G \cap G_2$ are relatively open in $G$ we have that $\gamma^{-1}(G \cap G_1)$ and $\gamma^{-1}(G \cap G_2)$ are open in $\intcc{a,b}$. Furthermore, since $a \in \gamma^{-1}(G \cap G_1)$ and $b \in \gamma^{-1}(G \cap G_2)$ we have that both preimages are non-empty. By
 	\begin{equation*}
