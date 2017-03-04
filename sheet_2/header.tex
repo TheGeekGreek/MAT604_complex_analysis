@@ -194,11 +194,11 @@
   {}                                     %Space below
   {\itshape}		                     %Body font
   {}                                     %Indent amount
-  {\scshape}                             %Theorem head font
+  {\bfseries}                             %Theorem head font
   {.}                                    %Punctuation after theorem head
   { }                                    %Space after theorem head, ' ', 
   										 %	or \newline
-  {} 
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}} 
 \theoremstyle{bold}
 \newtheorem*{definition*}{Definition}
 \newtheorem{definition}{Definition}[section]
@@ -236,3 +236,4 @@
 }
 %Weierstrass-P symbol for power set
 \newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+\newcommand{\bld}[1]{\boldmath\textit{\textbf{#1}}\unboldmath}
