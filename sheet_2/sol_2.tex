@@ -205,7 +205,7 @@ Since evidently $G = G_1 \cup G_1^c$ and by lemma \ref{lem:G_1} and \ref{lem:G_1
 		g(h(z)) = i\frac{1 + (z - i)/(z + i)}{1 - (z - i)/(z + i)} = z \qquad \text{and} \qquad h(g(w)) = \frac{(1 + w)/(1-w)- 1}{(1 + w)/(1-w) + 1} = w.
 	\end{equation*}
 
-	Therefore $g = h^{-1}$.	
+	Thus $g \circ h = \id_{\mathbb{H}}$ and $h \circ g = \id_{\mathbb{E}}$ which implies that $g$ and $h$ are bijective and inverse to each other, thus $g = h^{-1}$.	
 	\end{proof}
 	
 	\begin{lemma}
@@ -219,28 +219,49 @@ Since evidently $G = G_1 \cup G_1^c$ and by lemma \ref{lem:G_1} and \ref{lem:G_1
 	
 	By lemma \ref{lem:well_defined}, \ref{lem:invertible} and \ref{lem:holo} we conclude that the Cayley-map is biholomorphic. 
 
-\item
+\item In both cases we use that a function $f: D \to \mathbb{C}$, where $D \subseteq \mathbb{C}$ is non-empty and open, is complex-differentiable in $c \in D$ if and only if $f$ is real-differentiable in $c$ and the Cauchy-Riemann equations 
+	\begin{equation*}
+		\pd{u}{x}(c) = \pd{v}{y}(c) \qquad \text{and} \qquad \pd{u}{y}(c) = -\pd{v}{x}(c)
+	\end{equation*}
+
+	\noindent holds, where $f = u + iv$ (see \cite[47]{remmert2002funktionentheorie}). Furthermore, there is a usefull sufficiency criterion (see \cite[48]{remmert2002funktionentheorie}).	
+	\begin{lemma}[Sufficient Criterion for complex Differentiability]
+		If $u$ and $v$ have continuous partial derivatives in $D$, then $f := u + iv$ is real differentiable in $D$. If additionally the Cauchy Riemann equations hold for some subset $\hat{D} \subseteq D$, then $f$ is complex differentiable in $\hat{D}$.
+	\end{lemma}
+
+	\begin{proof}
+		The first statement follows immediately from multivariable calculus (see Analysis II for example) by considering $f: D \to \mathbb{R}^2$ defined by 
+		\begin{equation*}
+			f(x,y) = u(x,y) + iv(x,y) = \begin{pmatrix}
+				u(x,y)\\
+				v(x,y)
+			\end{pmatrix}
+		\end{equation*}
+	
+		\noindent whereas the second statement follows from the above discussion.
+	\end{proof}
+
 	First we consider the function $f$. We can decompose $f = u + iv$ where $u,v: \mathbb{C} \to \mathbb{R}$ are defined by
 	\begin{equation}
 		u(x + iy) := x^3y^2 \qquad \text{and} \qquad v(x + iy) := x^2y^3.	
 	\end{equation}
 
-	Calculating the partial derivatives yields
+	Calculating the partial derivatives in $c := x + iy = (x,y)$ yields
 	\begin{equation*}
 		\pd{u}{x}(x,y) = 3x^2y^2 \qquad \pd{u}{y}(x,y) = 2x^3y \qquad \pd{v}{x}(x,y) = 2xy^3 \qquad \pd{v}{y}(x,y) = 3x^2 y^2.
 	\end{equation*}
 
-	The points in which $f$ is complex differentiable are exactly the points in which above partial derivatives fulfill the Cauchy-Riemann equations. Clearly 
+	We immediately see that all partial derivatives are continuous on $\mathbb{R}^2$ and thus $u$ and $v$ are (continuously) real differentiable in $\mathbb{R}^2$ and so is $f$. Clearly 
 	\begin{equation}
 		\pd{u}{x}(x,y) = 3x^2 y^2 = \pd{v}{y}(x,y)
 	\end{equation}
 
-	\noindent holds for any $x,y \in \mathbb{R}$ and thus for any $z \in \mathbb{R}$. However, for the second equation we get the requirement
+	\noindent holds for any $x,y \in \mathbb{R}$ and thus for any $c \in \mathbb{C}$. However, for the second equation we get the requirement
 	\begin{equation}
 		\pd{u}{y}(x,y) = 2x^3y = -2xy^3 = -\pd{v}{x}(x,y). 
 	\end{equation}
 
-	\noindent or equivalently $x^3y = -xy^3$. If $x = 0$, then the equality holds for any $y \in \mathbb{R}$ and if $y = 0$ then the equality holds for any $x \in \mathbb{R}$. If $x,y \neq 0$ we get the equality $x^2 = -y^2$ which cannot be true since $y^2 > 0$ and thus $x^2 < 0$. Hence the set in which $f$ is complex differentiable is exactly $\cbr[0]{z \in \mathbb{C} : \Re(z) = 0 \vee \Im(z) = 0}$.\\
+	\noindent or equivalently $x^3y = -xy^3$. If $x = 0$, then the equality holds for any $y \in \mathbb{R}$ and if $y = 0$ then the equality holds for any $x \in \mathbb{R}$. If $x,y \neq 0$ we get the equality $x^2 = -y^2$ which cannot be true since $y^2 > 0$ would imply $x^2 < 0$. Hence the set in which $f$ is complex differentiable is exactly $\cbr[0]{z \in \mathbb{C} : \Re(z) = 0 \vee \Im(z) = 0}$.\\
 	Now consider the function $g$. Similar to the previous part we can write $g = u + iv$ where $u,v: \mathbb{C} \to \mathbb{R}$ are defined by 
 	\begin{equation}
 		u(x + iy) := e^x\cos y \qquad \text{and} \qquad v(x + iy) := e^x \sin y.	
@@ -254,7 +275,7 @@ Since evidently $G = G_1 \cup G_1^c$ and by lemma \ref{lem:G_1} and \ref{lem:G_1
 		\pd{v}{y}(x,y) &= e^x\cos y = u(x + iy)
 	\end{align*}
 
-	\noindent which immediately implies that the Cauchy-Riemann equations holds on $\mathbb{C}$ and thus $g$ is holomorphic in $\mathbb{C}$ or \emph{entire}.
+	\noindent which immediately implies that $u$ and $v$ are real differentiable on $\mathbb{R}^2$ (since again all partial derivatives are continuous on $\mathbb{R}^2$), hence $f$ is real differentiable, and that the Cauchy-Riemann equations holds on $\mathbb{C}$. Thus $g$ is holomorphic in $\mathbb{C}$ or \emph{entire}.
 
 \end{enumerate}
 %\originalsectionstyle
