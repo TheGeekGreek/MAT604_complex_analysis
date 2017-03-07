@@ -1,0 +1,88 @@
+\input{header.tex}
+
+\title{Solutions Sheet 3}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+	\item 
+		Let $D \subseteq \mathbb{C}$ be non-empty and open in $\mathbb{C}$ and $f_1,f_2: D \to \mathbb{C}$ be real differentiable. Fix some $z_0 \in D$. Since $f_1$ and $f_2$ are real differentiable in $z_0$ there exists $\varphi_1,\varphi_2,\psi_1,\psi_2: D \to \mathbb{C}$ continuous at $z_0$ such that
+				\begin{align}
+					f_1(z) &= f_1(z_0) + (z - z_0)\varphi_1(z) + (\overline{z} - \overline{z_0})\psi_1(z)\label{eq:f_1}\\
+					f_2(z) &= f_2(z_0) + (z - z_0)\varphi_2(z) + (\overline{z} - \overline{z_0})\psi_2(z)\label{eq:f_2}
+				\end{align}
+				\noindent for all $z \in D$.
+		\begin{enumerate}[label = (\roman*),wide = 0pt, itemsep=1.5ex]
+			\item Let $a,b \in \mathbb{C}$. Multiplying (\ref{eq:f_1}) by $a$, (\ref{eq:f_2}) by $b$ and adding both equations yields
+				\begin{equation}
+					af_1(z) + bf_2(z) = af_1(z_0) + bf_2(z_0) + (z - z_0)(a\varphi_1(z) + b\varphi_2(z)) + (\overline{z} - \overline{z_0})(a\psi_1(z) + b\psi_2(z))
+					\label{eq:af_1+bf_2}
+				\end{equation} 
+
+				\noindent for all $z \in D$. Clearly, $a\varphi_1 + b \varphi_2$ and $a\psi_1 + b\psi_2$ are continuous functions in $z_0$ and from (\ref{eq:af_1+bf_2}) we deduce
+				\begin{equation}
+					\pd{(af_1 + bf_2)}{z}(z_0) = a\pd{f_1}{z}(z_0) + b\pd{f_2}{z}(z_0)
+				\end{equation}
+
+				\noindent and
+				\begin{equation}
+					\pd{(af_1 + bf_2)}{\overline{z}}(z_0) = a\pd{f_1}{\overline{z}}(z_0) + b\pd{f_2}{\overline{z}}(z_0).
+				\end{equation}
+
+				Since $z_0 \in D$ was arbitrary, we conclude
+				\begin{equation}
+					\pd{(af_1 + bf_2)}{z} = a\pd{f_1}{z} + b\pd{f_2}{z} \qquad \text{and} \qquad \pd{(af_1 + bf_2)}{\overline{z}} = a\pd{f_1}{\overline{z}} + b\pd{f_2}{\overline{z}}.
+				\end{equation}
+
+			\item Multiplying (\ref{eq:f_1}) and (\ref{eq:f_2}) yields
+				\begin{align*}
+					f_1f_2 = f_1(z_0)f_2(z_0) &+ (z - z_0) \sbr[0]{\varphi_1f_2(z_0) + f_1(z_0)\varphi_2 + (z - z_0)\varphi_1\varphi_2 + (\overline{z} - \overline{z_0})\psi_1\varphi_2}\\
+					&+ (\overline{z} - \overline{z_0})\sbr[0]{\psi_1f_2(z_0) + f_1(z_0)\psi_2 + (z - z_0)\psi_2\varphi_1 + (\overline{z} - \overline{z_0})\psi_1\psi_2}
+				\end{align*}
+
+				\noindent where the argument $z$ is omitted. Clearly, the two functions in the square brackets are continuous at $z_0$ and evaluating them at $z_0$ yields
+				\begin{equation}
+					\pd{(f_1f_2)}{z}(z_0) = \pd{f_1}{z}(z_0)f_2(z_0) + f_1(z_0)\pd{f_2}{z}(z_0)
+				\end{equation}
+				\noindent and
+				\begin{equation}
+					\pd{(f_1f_2)}{\overline{z}}(z_0) = \pd{f_1}{\overline{z}}(z_0)f_2(z_0) + f_1(z_0)\pd{f_2}{\overline{z}}(z_0).
+				\end{equation}
+
+				Since $z_0 \in D$ was arbitrary, we conclude
+				\begin{equation}
+					\pd{(f_1f_2)}{z} = \pd{f_1}{z}f_2 + f_1\pd{f_2}{z} \qquad \text{and} \qquad \pd{(f_1f_2)}{\overline{z}} = \pd{f_1}{\overline{z}}f_2 + f_1\pd{f_2}{\overline{z}}.
+				\end{equation}
+			\item Conjugating (\ref{eq:f_1}) yields
+				\begin{equation}
+					\overline{f_1}(z) = \overline{f_1}(z_0) + (\overline{z} - \overline{z_0})\overline{\varphi_1}(z) + (z - z_0)\overline{\psi_1}(z).
+					\label{eq:f_1_conj}
+				\end{equation}
+
+				From (\ref{eq:f_1_conj}) we deduce 
+				\begin{equation}
+					\pd{\overline{f_1}}{\overline{z}}(z_0) = \overline{\varphi_1}(z_0) = \overline{\frac{\partial f_1}{\partial z}}(z_0)
+					\label{eq:conj}
+				\end{equation}
+
+				\noindent since $\varphi_1$ and $\psi_1$ are also continuous at $z_0$. Taking conjugates in (\ref{eq:conj}) and use that $z_0 \in D$ was arbitrary finally yields
+				\begin{equation}
+					\overline{\frac{\partial\overline{f_1}}{\partial\overline{z}}} = \pd{f_1}{z}.
+				\end{equation}
+
+			\item This follows directly from
+				\begin{equation}
+					z = z_0 + (z - z_0) \qquad \text{and} \qquad \overline{z} = \overline{z_0} + (\overline{z} - \overline{z_0}).
+				\end{equation}
+
+			\item
+		\end{enumerate}
+
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
