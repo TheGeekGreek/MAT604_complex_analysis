@@ -82,6 +82,49 @@
 			\item
 		\end{enumerate}
 
+	\item We show the implications (i) $\Rightarrow$ (ii) $\Rightarrow$ (iii) $\Rightarrow$ (iv) $\Rightarrow$ (i). Since the proofs are of a relatively simple nature, we focus on the formal part. The complex numbers $\mathbb{C}$ are a vector space over $\mathbb{R}$ (as a field extension). So the situation of the exercise can be sumarized by the following commutative diagram:
+		\[
+			\xymatrix@=2cm{
+				\mathbb{C} \ar[r]^T &\mathbb{C}\\
+				\mathbb{R}^2 \ar[u]^{\Phi_B} \ar[r]_{M_B(T)} &\mathbb{R}^2 \ar[u]_{\Phi_B}}
+	 	\]
+
+		\noindent where $T$ is $\mathbb{R}$-linear, $\Phi_B$ denotes the basis-isomorphism which is in this case given by $\Phi_B(x,y) := x + ix$ and $M_B(T)$ is defined by
+		\begin{equation}
+			\begin{pmatrix}
+				x\\
+				y
+			\end{pmatrix} \mapsto
+			\begin{pmatrix}
+				a & b\\
+				c & d
+			\end{pmatrix}
+			\begin{pmatrix}
+				x\\
+				y
+			\end{pmatrix}.
+		\end{equation}
+		The first implication is evident by the definition of $\mathbb{C}$-linearity. Assume that (ii) holds. By 
+		\begin{equation}
+			T(i) = (\Phi_B \circ M_B(T) \circ \Phi_B^{-1})(i) = b + id
+		\end{equation}
+		\noindent and
+		\begin{equation}
+			iT(1) = i(\Phi_B \circ M_B(T) \circ \Phi_B^{-1})(1) = i(a + ic) = -c + ia 
+		\end{equation}
+
+		\noindent we get the requirement $b + id = -c + ia$. Hence $b = -c$ and $a = d$. Assume that (iii) holds. Then we have for $z := x + iy \in \mathbb{C}$
+		\begin{equation}
+			T(z) = (\Phi_B \circ M_B(T) \circ \Phi_B^{-1})(x + iy) = (ax - cy) + i(cx + ay) = (a + ic)z.
+		\end{equation}
+
+		Finally, assume that (iv) holds. Then $T$ is clearly $\mathbb{C}$-linear since 
+		\begin{equation}
+			T(\lambda z + w) = (a + ic)(\lambda z + w) = \lambda(a + ic)z + (a + ic)w = \lambda T(z) + T(w)
+		\end{equation}
+
+		\noindent for $\lambda,z,w \in \mathbb{C}$.
+
 \end{enumerate}
 %\originalsectionstyle
 \printbibliography
