@@ -79,8 +79,35 @@
 					z = z_0 + (z - z_0) \qquad \text{and} \qquad \overline{z} = \overline{z_0} + (\overline{z} - \overline{z_0}).
 				\end{equation}
 
-			\item
-		\end{enumerate}
+			\item See separate sheet.
+			\item See separate sheet.
+			\item Let $t_0 \in I$. The function $\varphi: I \to U \subseteq \mathbb{C}$ is differentiable if and only if there exists a function $\varphi_1: I \to U$ which is continuous at $t_0$ and such that
+				\begin{equation}
+					\varphi(t) = \varphi(t_0) + (t - t_0)\varphi_1(t)
+					\label{eq:ordinary}
+				\end{equation}
+
+				\noindent for all $t \in I$ (this was proven in Analysis I). Furthermore there exists $f_1,f_2: U \to \mathbb{C}$ continuous at $\varphi(t_0)$ such that 
+				\begin{equation}
+					f(z) = f(\varphi(t_0)) + (z - \varphi(t_0))f_1(z) + (\overline{z} - \overline{\varphi(t_0)})f_2(z)
+					\label{eq:f_1_ordinary}
+				\end{equation}
+				\noindent for all $z \in U$. Combining (\ref{eq:ordinary}) and (\ref{eq:f_1_ordinary}) yields
+				\begin{align*}
+					f(\varphi(t)) &= f(\varphi(t_0)) + (\varphi(t) - \varphi(t_0))f_1(z) + (\overline{\varphi(t)} - \overline{\varphi(t_0)})f_2(z)\\
+					&= f(\varphi(t_0)) + (t - t_0)\sbr[0]{\varphi_1(t)f_1(\varphi(t)) + \overline{\varphi_1(t)}f_2(\varphi(t))}
+				\end{align*}
+
+				\noindent for all $t \in I$. Again, $\varphi_1(t)f(\varphi(t)) + \overline{\varphi_1(t)}f_2(\varphi(t))$ is clearly continuous at $t_0$ since composited functions are and thus we conclude
+				\begin{equation}
+					\od{(f \circ \varphi)}{t}(t_0) = \od{\varphi}{t}(t_0)\pd{f}{z}(\varphi(t_0)) + \frac{\d \overline{\varphi}}{\d t}(t_0)\pd{f}{\overline{z}}(\varphi(t_0)).
+				\end{equation}
+
+				Since $t_0 \in I$ was arbitrary we conclude
+				\begin{equation}
+					\od{(f \circ \varphi)}{t} = \od{\varphi}{t}\pd{f}{z} + \frac{\d \overline{\varphi}}{\d t}\pd{f}{\overline{z}}.
+				\end{equation}
+				\end{enumerate}
 
 	\item We show the implications (i) $\Rightarrow$ (ii) $\Rightarrow$ (iii) $\Rightarrow$ (iv) $\Rightarrow$ (i). Since the proofs are of a relatively simple nature, we focus on the formal part. The complex numbers $\mathbb{C}$ are a vector space over $\mathbb{R}$ (as a field extension). So the situation of the exercise can be sumarized by the following commutative diagram:
 		\[
@@ -88,8 +115,7 @@
 				\mathbb{C} \ar[r]^T &\mathbb{C}\\
 				\mathbb{R}^2 \ar[u]^{\Phi_B} \ar[r]_{M_B(T)} &\mathbb{R}^2 \ar[u]_{\Phi_B}}
 	 	\]
-
-		\noindent where $T$ is $\mathbb{R}$-linear, $\Phi_B$ denotes the basis-isomorphism which is in this case given by $\Phi_B(x,y) := x + ix$ and $M_B(T)$ is defined by
+		\noindent where $T$ is $\mathbb{R}$-linear, $\Phi_B$ denotes the basis-isomorphism which is in this case given by $\Phi_B(x,y) := x + iy$ and $M_B(T)$ is defined by
 		\begin{equation}
 			\begin{pmatrix}
 				x\\
@@ -124,7 +150,6 @@
 		\end{equation}
 
 		\noindent for $\lambda,z,w \in \mathbb{C}$.
-
 \end{enumerate}
 %\originalsectionstyle
 \printbibliography
