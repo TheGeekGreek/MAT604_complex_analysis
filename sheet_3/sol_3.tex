@@ -150,6 +150,104 @@
 		\end{equation}
 
 		\noindent for $\lambda,z,w \in \mathbb{C}$.
+
+	\item See separate sheet.
+
+	\item We show this in two steps: first $\liminf_{\nu \to \infty}\abs[0]{a_\nu}/\abs[0]{a_{\nu + 1}} \leq R$ and second $R \leq \limsup_{\nu \to \infty}\abs[0]{a_\nu}/\abs[0]{a_{\nu + 1}}$. Define 
+		\begin{equation}
+			S := \liminf_{\nu \to \infty}\frac{\abs[0]{a_\nu}}{\abs[0]{a_{\nu + 1}}} \qquad \text{and} \qquad T := \limsup_{\nu \to \infty}\frac{\abs[0]{a_\nu}}{\abs[0]{a_{\nu + 1}}}.
+		\end{equation}
+
+		If $S = 0$ there is nothing to prove. First we assume that $0 < S < \infty$. Since $a_\nu \neq $ for almost all $\nu \in \mathbb{N}$ we find $\nu_0'$ such that $a_\nu \neq 0$ for all $\nu \geq \nu_0'$. For any $\varepsilon > 0$ we find $v_0 \in \mathbb{N}$, $\nu_0 \geq \nu_0'$ such that
+		\begin{equation}
+			\abs[3]{\inf_{\mu \geq \nu}\cbr[3]{\frac{\abs[0]{a_\mu}}{\abs[0]{a_{\mu + 1}}}} - S} < \varepsilon \qquad \forall \nu \geq \nu_0
+			\label{eq:est_inf}
+		\end{equation}
+
+		Setting $\nu = \nu_0$ in (\ref{eq:est_inf}) yields 
+		\begin{equation}
+			S - \varepsilon < \frac{\abs[0]{a_\nu}}{\abs[0]{a_{\nu + 1}}}  \qquad \forall \nu \geq \nu_0.
+			\label{eq:est_equi}
+		\end{equation}
+
+		Now let $0 < \varepsilon < S$.
+
+		\begin{lemma}
+			For all $\nu \geq \nu_0$ we have $\abs[0]{a_\nu}(S - \varepsilon)^\nu \leq \abs[0]{a_{\nu_0}}(S - \varepsilon)^{\nu_0}$.
+			\label{lem:ind}
+		\end{lemma}
+
+		\begin{proof}
+			Proof by induction on $\nu \geq \nu_0$. The case $\nu = \nu_0$ is clear. By (\ref{eq:est_equi}) we have that
+			\begin{equation}
+				\abs[0]{a_{\nu + 1}}(S - \varepsilon)^{\nu + 1} = 	\abs[0]{a_{\nu + 1}}(S - \varepsilon)^{\nu}(S - \varepsilon) \leq \abs[0]{a_\nu}(S - \varepsilon)^\nu \leq \abs[0]{a_{\nu_0}}(S - \varepsilon)^{\nu_0}.  
+			\end{equation}
+		\end{proof}
+
+		Hence 
+		\begin{equation}
+			\abs[0]{a_\nu}(S - \varepsilon)^\nu \leq \max\cbr[0]{\abs[0]{a_0},\dots,\abs[0]{a_{\nu_0 - 1}}(S - \varepsilon)^{\nu_0 -1},\abs[0]{a_{\nu_0}}(S - \varepsilon)^{\nu_0}} \qquad \forall \nu \in \mathbb{N}.
+			\label{eq:bound}
+		\end{equation}
+
+		Taking the limit $\varepsilon \searrow 0$ on inequality (\ref{eq:bound}) yields
+		\begin{equation}
+			\abs[0]{a_\nu}S^\nu \leq \max\cbr[0]{\abs[0]{a_0},\dots,\abs[0]{a_{\nu_0 - 1}}S^{\nu_0 -1},\abs[0]{a_{\nu_0}}S^{\nu_0}} \qquad \forall \nu \in \mathbb{N}
+		\end{equation}
+
+		\noindent and thus
+		\begin{equation}
+			S \leq R.
+		\end{equation}
+
+		Now we consider the case $S = \infty$. By definition, for every $M > 0$ we find $\nu_0 \in \mathbb{N}$, $\nu_0 \geq \nu_0'$ such that 
+		\begin{equation}
+			\inf_{\mu \geq \nu}\cbr[3]{\frac{\abs[0]{a_\mu}}{\abs[0]{a_{\mu + 1}}}} > M \qquad \forall \nu \geq \nu_0.
+		\end{equation}
+
+		Again, this is equivalent to
+		\begin{equation}
+			 M < \frac{\abs[0]{a_\nu}}{\abs[0]{a_{\nu + 1}}} \qquad \forall \nu \geq \nu_0.
+		\end{equation}
+
+		Similarly to the statement of lemma \ref{lem:ind} one proves that 
+		\begin{equation}
+			\abs[0]{a_\nu}M^\nu \leq \abs[0]{a_{\nu_0}}M^{\nu_0} \qquad \forall \nu \geq \nu_0.
+		\end{equation}
+
+		Hence
+		\begin{equation}
+			\abs[0]{a_\nu}M^\nu \leq \max\cbr[0]{a_0,\dots,a_{\nu_0 - 1}M^{\nu_0 - 1},\abs[0]{a_{\nu_0}}M^{\nu_0}} \qquad \forall M > 0.
+		\end{equation}
+
+		Thus the sequence $(\abs[0]{a_\nu}M^\nu)_{\nu \in \mathbb{N}}$ is bounded for any $M > 0$ which implies $R = \infty$.\\
+		If $T = \infty$ there is nothing to prove. So assume $0 < T < \infty$. Fix $ \varepsilon > 0$. By the definition of the limit superior we find an index $\nu_0 \in \mathbb{N}$, $\nu_0 \geq \nu_0'$, such that
+		\begin{equation}
+			\abs[3]{\sup_{\mu \geq \nu}\cbr[3]{\frac{\abs[0]{a_\mu}}{\abs[0]{a_{\mu + 1}}}} - T} < \varepsilon \qquad \forall \nu \geq \nu_0.
+			\label{eq:est_sup}
+		\end{equation}
+
+		Estimate (\ref{eq:est_sup}) is equivalent to
+		\begin{equation}
+			\frac{\abs[0]{a_\nu}}{\abs[0]{a_{\nu + 1}}} < T + \varepsilon \qquad \forall \nu \geq \nu_0.
+			\label{est:eq_sup}
+		\end{equation}
+
+		We have an analogous version of lemma \ref{lem:ind}.
+		\begin{lemma}
+			For all $\nu \geq \nu_0$ we have $\abs[0]{a_\nu}(T + \varepsilon)^\nu \geq \abs[0]{a_{\nu_0}}(T + \varepsilon)^{\nu_0}$.
+			\label{lem:sup}
+		\end{lemma}
+
+		\begin{proof}
+			Proof by induction on $\nu \geq \nu_0$. If $\nu = \nu_0$ there is nothing to prove. Furthermore, estimate (\ref{est:eq_sup}) implies
+			\begin{equation}
+				\abs[0]{a_{\nu + 1}}(T + \varepsilon)^{\nu + 1} \geq \abs[0]{a_{\nu}}(T + \varepsilon)^{\nu} \geq \abs[0]{a_{\nu_0}}(T + \varepsilon)^{\nu_0}.
+			\end{equation}
+		\end{proof} 
+
+		An immediate consequence of lemma \ref{lem:sup} is that if $T \neq 0$ we have that $(\abs[0]{a_\nu}T^\nu)_{\nu \in \mathbb{N}} \not\to 0$ (take the limit $\varepsilon \searrow 0$). So $T + z_0 \in \mathbb{C} \setminus B_R(z_0)$, which immediately implies $T \geq R$. Finally we consider the case $T = 0$.
+
 \end{enumerate}
 %\originalsectionstyle
 \printbibliography
