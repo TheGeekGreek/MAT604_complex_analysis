@@ -139,12 +139,39 @@
 	\end{equation}
 
 	\noindent for all $z \in \mathbb{C}$.
-\item Define $b := g(0)$. Since $g(0) \neq 0$, we have $b \in \mathbb{C}^\times$. Consider 
-	the auxiliary function $\varphi: \mathbb{C} \to \mathbb{C}$ defined by
-			\begin{equation}
-				\psi(z) := g(z)\exp(-bz).
-			\end{equation}
-		Clearly $\psi \in \mathcal{O}(\mathbb{C})$ as a product of holomorphic functions. 
+\item Differentiation of the addition formula with respect to $w$ yields
+	\begin{equation}
+		g'(z + w) = g(z)g'(w).
+		\label{eq:diff}
+	\end{equation}
+
+	\noindent for all $w,z \in \mathbb{C}$. Evaluating (\ref{eq:diff}) at $w = 0$ gives
+	\begin{equation}
+		g'(z) = g(z)g'(0).
+	\end{equation}
+
+	Define $\psi: \mathbb{C} \to \mathbb{C}$ by
+	\begin{equation}
+		\psi(z) := g(z)\exp(-g'(0)z).
+	\end{equation}
+
+	Clearly $\psi \in \mathcal{O}(\mathbb{C})$ as a product of holomorphic functions. Similar to part (a) we get
+	\begin{align*}
+		\psi'(z) &= g'(z)\exp(-g'(0)z) - g(z)g'(0)\exp(-g'(0)z)\\
+		&= g(z)g'(0)\exp(-g'(0)z) - g(z)g'(0)\exp(-g'(0)z)\\
+		&= 0	
+	\end{align*}
+	\noindent for all $z \in \mathbb{C}$. Again $\psi$ is constant on $\mathbb{C}$ and with 
+	\begin{equation}
+		g(0) = g(0 + 0) = g(0)g(0)
+	\end{equation}
+
+	\noindent immediately follows $g(0) = 1$ by $g(0) \neq 0$. Thus $\psi(0) = 1$ and hence $\psi \equiv 1$ on $\mathbb{C}$ which implies
+	\begin{equation}
+		g(z) = \exp(g'(0)z) = \exp(bz)
+	\end{equation}
+
+	\noindent for $b := g'(0)$.
 	\end{enumerate}
 
 \item
