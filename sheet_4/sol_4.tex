@@ -1,0 +1,202 @@
+\input{header.tex}
+
+\title{Solutions Sheet 3}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\textbf{Remark:} We will abreviate $\mathbb{C}^\times := \mathbb{C} \setminus \cbr[0]{0}$.
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+	\item
+		~
+		\begin{enumerate}[label = (\alph*),wide = 0pt, itemsep=1.5ex]
+			\item We use the quotient criterion \cite[100]{remmert2002funktionentheorie}. Consider the sequence
+				\begin{equation}
+					a_\nu := \frac{\nu!}{2^\nu (2\nu)!} \qquad \nu \in \mathbb{N}_{> 0}.
+				\end{equation}
+
+				Clearly $a_\nu \neq 0$ for all $\nu \in \mathbb{N}_{>0}$. We have 
+				\begin{align*}
+					\lim_{\nu \to \infty} \frac{\abs[0]{a_\nu}}{\abs[0]{a_{\nu + 1}}} &= \lim_{\nu \to \infty} \frac{\nu!}{2^\nu(2\nu)!}\frac{2^{\nu + 1}(2(\nu + 1))!}{(\nu + 1)!}\\
+					&= \lim_{\nu \to \infty} \frac{2(2\nu + 1)(2\nu + 2)}{\nu + 1}\\
+					&= 4\lim_{\nu \to \infty}(2\nu + 1)\\
+					&= \infty
+				\end{align*}
+
+				Thus by
+				\begin{equation}
+					\lim_{\nu \to \infty} \frac{\abs[0]{a_\nu}}{\abs[0]{a_{\nu + 1}}} = \limsup_{\nu \to \infty} \frac{\abs[0]{a_\nu}}{\abs[0]{a_{\nu + 1}}} = \liminf_{\nu \to \infty} \frac{\abs[0]{a_\nu}}{\abs[0]{a_{\nu + 1}}}
+				\end{equation}
+
+				\noindent and 
+				\begin{equation}
+					 \liminf_{\nu \to \infty} \frac{\abs[0]{a_\nu}}{\abs[0]{a_{\nu + 1}}} \leq R \leq \limsup_{\nu \to \infty} \frac{\abs[0]{a_\nu}}{\abs[0]{a_{\nu + 1}}}
+				\end{equation}
+
+				\noindent we get
+				\begin{equation}
+					R = \infty.
+				\end{equation}
+
+			\item We use the Cauchy-Hadamard formula \cite[99]{remmert2002funktionentheorie}. Let $c \in C^\times$. Consider the sequence
+				\begin{align*}
+					a_\nu := \begin{cases}
+						\frac{1}{c^{\nu/2}}& \nu \equiv 0 \bmod 2\\
+						0 & \nu \equiv 1 \bmod 2
+					\end{cases}
+				\end{align*}
+
+				Since $0 \leq 1/c^{\nu/2}$ we get
+				\begin{align*}
+					\limsup_{\nu \to \infty} \abs[0]{a_\nu}^{1/\nu} &= \lim_{\nu \to \infty}\sup_{\mu \geq \nu} \cbr[0]{\abs[0]{a_\mu}^{1/\mu}}\\
+					&= \lim_{\nu \to \infty}\sup_{\substack{\mu \geq \nu\\\mu \equiv 0 \bmod 2}}\cbr[0]{\abs[0]{a_\mu}^{1/\mu}}\\
+					&= \limsup_{\nu \to \infty} \abs[3]{\frac{1}{c^{\nu/2}}}^{1/\nu}\\
+					&= \limsup_{\nu \to \infty} \frac{1}{\sqrt{\abs[0]{c}}}\\
+					&= \lim_{\nu \to \infty} \frac{1}{\sqrt{\abs[0]{c}}}\\
+					&= \frac{1}{\sqrt{\abs[0]{c}}}
+				\end{align*}
+
+				\noindent and therefore
+				\begin{equation}
+					R = \frac{1}{\limsup_{\nu \to \infty} \abs[0]{a_\nu}^{1/\nu}} = \sqrt{\abs[0]{c}}.
+				\end{equation}
+		\end{enumerate}
+
+	\item Proof by induction over $k \in \mathbb{N}$. If $k = 0$ we have 
+		\begin{equation}
+			\sum_{\nu = 0}^\infty {\nu \choose 0} z^\nu = \sum_{\nu = 0}^\infty z^\nu = \frac{1}{1 - k}
+		\end{equation}
+		\noindent by the well-known identity for the geometric series (see \cite[24]{remmert2002funktionentheorie}) which holds for all $z \in \mathbb{E}$. Now assume the stated identity is true for some $k \in \mathbb{N}$. Pascal's identity and the substitution $\mu := \nu - 1$ yields
+	\begin{align}
+		\sum_{\nu = k + 1}^\infty {\nu \choose {k + 1}} z^{\nu - (k + 1)} &= 1 + \sum_{\nu = k + 2}^\infty {\nu \choose {k + 1}} z^{(\nu - 1) - k }\nonumber\\
+		&= 1 +\sum_{\nu = k + 2}^\infty \sbr[4]{{{\nu - 1} \choose k } + {{\nu - 1} \choose {k + 1}}} z^{(\nu - 1) - k }\nonumber\\
+		&= 1 + \sum_{\nu = k + 2}^\infty {{\nu - 1} \choose k }z^{(\nu - 1) - k} + \sum_{\nu = k + 2}^\infty{{\nu - 1} \choose {k + 1}} z^{(\nu - 1) - k }\label{eq:ind_step}\\
+		&= {k \choose k}z^0 + \sum_{\mu = k + 1}^\infty {\mu \choose k }z^{\mu - k} + \sum_{\mu = k + 1}^\infty{\mu \choose {k + 1}} z^{\mu - k }\nonumber\\
+		&= \sum_{\mu = k}^\infty {\mu \choose k }z^{\mu - k} + z\sum_{\mu = k + 1}^\infty{\mu \choose {k + 1}} z^{\mu - k - 1}\nonumber
+	\end{align}
+
+	Applying the induction hypothesis on (\ref{eq:ind_step}) and rearranging yields 
+	\begin{equation}
+		\sum_{\nu = k + 1}^\infty {\nu \choose {k + 1}} z^{\nu - (k + 1)} = \frac{1}{(1 - z)(1 - z)^{k + 1}} = \frac{1}{(1 - z)^{k + 2}}.	
+	\end{equation}
+
+	Therefore we conclude by the principle of induction.
+
+	A more elegant proof can be deduced from the interchangeability of differentiation and summation of power series (see \cite[110]{remmert2002funktionentheorie}).
+
+	\begin{lemma}
+		For $z \in \mathbb{E}$ and $k \in \mathbb{N}$ we have 
+		\begin{equation}
+			\frac{\d^k}{\d z^k} \frac{1}{1 - z} = \frac{k!}{(1 - z)^{k + 1}}.
+		\end{equation}
+		\label{lem:ind}
+	\end{lemma}
+
+	\begin{proof}
+		Proof by induction over $k \in \mathbb{N}$. The statement obviously holds for $k = 0$. Assume the statement holds for $k \in \mathbb{N}$. Then we get
+		\begin{align*}
+			\frac{\d^{k+1}}{\d z^{k+1}} \frac{1}{1 - z} &= \frac{\d}{\d z} \sbr[3]{\frac{\d^k}{\d z^k} \frac{1}{1 - z}}\\
+			&= \frac{\d}{\d z} \frac{k!}{(1 - z)^{k + 1}}\\
+			&= k!\frac{(k + 1)(1 - z)^k}{(1 - z)^{2k + 2}}\\
+			&= \frac{(k + 1)!}{(1 - z)^{k + 2}}.
+		\end{align*}
+	\end{proof}
+
+	By lemma \ref{lem:ind} and the formula for the $k$-th derivative of a power series \cite[110]{remmert2002funktionentheorie} applied to the \emph{geometric series} $\sum_{\nu = 0}^\infty z^\nu$ we get
+	\begin{equation}
+		\frac{k!}{(1 - z)^{k + 1}} = \frac{\d^k}{\d z^k} \frac{1}{1 - z} = \sum_{\nu = k}^\infty k!{\nu \choose k}z^{\nu - k}
+		\label{eq:der}
+	\end{equation}
+
+	\noindent for $k \in \mathbb{N}$. Dividing (\ref{eq:der}) by $k!$ yields
+	\begin{equation}
+		\sum_{\nu = k}^\infty {\nu \choose k}z^{\nu - k} = \frac{1}{(1 - z)^{k + 1}}.
+	\end{equation}
+\item
+	~
+	\begin{enumerate}[label = (\alph*),wide = 0pt, itemsep=1.5ex]
+		\item Consider the auxiliary function $\varphi: \mathbb{C} \to \mathbb{C}$ defined by
+			\begin{equation}
+				\varphi(z) := f(z)\exp(-z).
+			\end{equation}
+		Clearly $\varphi \in \mathcal{O}(\mathbb{C})$ as a product of holomorphic functions. Furthermore by $f' = f$ we get 
+	\begin{equation}
+		\varphi'(z) = f'(z)\exp(-z) - f(z)\exp(-z) = \varphi(z) - \varphi(z) = 0
+		\label{eq:const}
+	\end{equation}
+
+	\noindent for any $z \in \mathbb{C}$. By \cite[55]{remmert2002funktionentheorie} $\varphi$ is locally constant on $\mathbb{C}$ and since $\mathbb{C}$ is connected we have that $\varphi$ is constant on $\mathbb{C}$ (see \cite[35]{remmert2002funktionentheorie}). Since $f(0) = 1$ we have
+	\begin{equation}
+		\varphi(0) = f(0)\exp(0) = 1.
+	\end{equation}
+
+	Thus $\varphi \equiv 1$ which yields
+	\begin{equation}
+		\exp(z) = 1\cdot \exp(z) = \varphi(z)\exp(z) = f(z)\exp(-z)\exp(z) = f(z)
+	\end{equation}
+
+	\noindent for all $z \in \mathbb{C}$.
+\item Define $b := g(0)$. Since $g(0) \neq 0$, we have $b \in \mathbb{C}^\times$. Consider 
+	the auxiliary function $\varphi: \mathbb{C} \to \mathbb{C}$ defined by
+			\begin{equation}
+				\psi(z) := g(z)\exp(-bz).
+			\end{equation}
+		Clearly $\psi \in \mathcal{O}(\mathbb{C})$ as a product of holomorphic functions. 
+	\end{enumerate}
+
+\item
+	~
+	\begin{enumerate}[label = (\alph*),wide = 0pt, itemsep=1.5ex]
+		\item 
+			~
+			\begin{proposition}
+				For all $w,z \in \mathbb{C}$ holds: 
+				\begin{align}
+					&\cos(w + z) = \cos w \cos z - \sin w \sin z\label{eq:cos}\\
+					&\sin(w + z) = \sin w \cos z + \cos w \sin z\label{eq:sin}.
+				\end{align}
+			\end{proposition}
+
+			\begin{proof}
+				First we prove (\ref{eq:cos}). We have 
+				\begin{align*}
+					\cos w \cos z &= \frac{1}{4}\del[0]{e^{iw} + e^{-iw}}\del[0]{e^{iz} + e^{-iz}}\\ &= \frac{1}{4}\del[0]{e^{i(w + z)} + e^{i(w - z)} + e^{i(z - w)} + e^{-i(w + z)}}
+				\end{align*}
+
+				\noindent and
+				\begin{align*}
+					\sin w \sin z &= -\frac{1}{4}\del[0]{e^{iw} - e^{-iw}}\del[0]{e^{iz} - e^{-iz}}\\ &= -\frac{1}{4}\del[0]{e^{i(w + z)} - e^{i(w - z)} - e^{i(z - w)} + e^{-i(w + z)}}
+				\end{align*}
+
+				Thus
+				\begin{equation}
+					\cos w \cos z - \sin w \sin z = \frac{1}{2}(e^{i(w + z)} + e^{-i(w + z)}) = \cos(w + z).
+				\end{equation}
+
+				Now we prove (\ref{eq:sin}). We have 
+				\begin{align*}
+					\sin w \cos z &= \frac{1}{4i}\del[0]{e^{iw} - e^{-iw}}\del[0]{e^{iz} + e^{-iz}}\\ &= \frac{1}{4i}\del[0]{e^{i(w + z)} + e^{i(w - z)} - e^{i(z - w)} - e^{-i(w + z)}}
+				\end{align*}
+
+				\noindent and
+				\begin{align*}
+					\cos w \sin z &= \frac{1}{4i}\del[0]{e^{iw} + e^{-iw}}\del[0]{e^{iz} - e^{-iz}}\\ &= \frac{1}{4i}\del[0]{e^{i(w + z)} - e^{i(w - z)} + e^{i(z - w)} - e^{-i(w + z)}}
+				\end{align*}
+
+				Thus
+				\begin{equation}
+					\sin w \cos z + \cos w \sin z = \frac{1}{2i}\del[0]{e^{i(w + z)} - e^{-i(w + z)}} = \sin(w + z). 
+				\end{equation}
+			\end{proof}
+
+		\item
+
+		\item 
+	\end{enumerate}
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
