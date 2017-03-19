@@ -1,6 +1,6 @@
 \input{header.tex}
 
-\title{Solutions Sheet 3}
+\title{Solutions Sheet 4}
 \author{Yannis B\"{a}hni}
 \address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
 \email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
@@ -41,7 +41,7 @@
 					R = \infty.
 				\end{equation}
 
-			\item We use the Cauchy-Hadamard formula \cite[99]{remmert2002funktionentheorie}. Let $c \in C^\times$. Consider the sequence
+			\item We use the Cauchy-Hadamard formula \cite[99]{remmert2002funktionentheorie}. Let $c \in \mathbb{C}^\times$. Consider the sequence
 				\begin{align*}
 					a_\nu := \begin{cases}
 						\frac{1}{c^{\nu/2}}& \nu \equiv 0 \bmod 2\\
@@ -49,11 +49,11 @@
 					\end{cases}
 				\end{align*}
 
-				Since $0 \leq 1/c^{\nu/2}$ we get
+				Since $0 \leq 1/\abs{c}^{\nu/2}$ we get
 				\begin{align*}
 					\limsup_{\nu \to \infty} \abs[0]{a_\nu}^{1/\nu} &= \lim_{\nu \to \infty}\sup_{\mu \geq \nu} \cbr[0]{\abs[0]{a_\mu}^{1/\mu}}\\
 					&= \lim_{\nu \to \infty}\sup_{\substack{\mu \geq \nu\\\mu \equiv 0 \bmod 2}}\cbr[0]{\abs[0]{a_\mu}^{1/\mu}}\\
-					&= \limsup_{\nu \to \infty} \abs[3]{\frac{1}{c^{\nu/2}}}^{1/\nu}\\
+					&= \limsup_{\nu \to \infty} \abs[3]{\frac{1}{c^{\nu}}}^{1/(2\nu)}\\
 					&= \limsup_{\nu \to \infty} \frac{1}{\sqrt{\abs[0]{c}}}\\
 					&= \lim_{\nu \to \infty} \frac{1}{\sqrt{\abs[0]{c}}}\\
 					&= \frac{1}{\sqrt{\abs[0]{c}}}
@@ -67,7 +67,7 @@
 
 	\item Proof by induction over $k \in \mathbb{N}$. If $k = 0$ we have 
 		\begin{equation}
-			\sum_{\nu = 0}^\infty {\nu \choose 0} z^\nu = \sum_{\nu = 0}^\infty z^\nu = \frac{1}{1 - k}
+			\sum_{\nu = 0}^\infty {\nu \choose 0} z^\nu = \sum_{\nu = 0}^\infty z^\nu = \frac{1}{1 - z}
 		\end{equation}
 		\noindent by the well-known identity for the geometric series (see \cite[24]{remmert2002funktionentheorie}) which holds for all $z \in \mathbb{E}$. Now assume the stated identity is true for some $k \in \mathbb{N}$. Pascal's identity and the substitution $\mu := \nu - 1$ yields
 	\begin{align}
@@ -221,7 +221,19 @@
 
 		\item
 
-		\item 
+		\item Let $z \in \mathbb{C} \setminus 2\pi \mathbb{Z}$. Then the index shift $\mu := \nu + n$ and application of the formula for the partial sum of a geometric series yields
+			\begin{align*}
+				\sum_{\nu = 0}^n \cos(\nu z) &= \frac{1}{2}\sum_{\nu = 0}^n \del[0]{e^{i\nu z} + e^{-i\nu z}}\\
+				&= \frac{1}{2} + \frac{1}{2}\sum_{\nu = -n}^n e^{i\nu z}\\
+				&= \frac{1}{2} + \frac{1}{2}\sum_{\mu = 0}^{2n} e^{i(\mu - n)z}\\
+				&= \frac{1}{2} + \frac{1}{2}e^{-inz}\sum_{\mu = 0}^{2n} e^{i\mu z}\\
+				&= \frac{1}{2} + \frac{1}{2}e^{-inz}\frac{1 - e^{iz(2n + 1)}}{1 - e^{iz}}\\
+				&= \frac{1}{2} + \frac{1}{2}e^{-inz}\frac{e^{iz(2n + 1)}- 1}{e^{iz} - 1}\\
+				&= \frac{1}{2} + \frac{1}{2}e^{-inz}\frac{e^{-iz(n + 1/2)}}{e^{-iz(n + 1/2)}}\frac{e^{2iz(n + 1/2)}- 1}{e^{iz} - 1}\\
+				&= \frac{1}{2} + \frac{1}{2}\frac{1}{e^{-iz/2}}\frac{e^{iz(n + 1/2)}- e^{-iz(n + 1/2)}}{e^{iz} - 1}\\
+				&= \frac{1}{2} + \frac{1}{2}\frac{e^{iz(n + 1/2)}- e^{-iz(n + 1/2)}}{e^{iz/2} - e^{-iz/2}}\\
+				&= \frac{1}{2} + \frac{1}{2} \frac{\sin\del[0]{nz + z/2}}{\sin(z/2)}
+			\end{align*}
 	\end{enumerate}
 \end{enumerate}
 %\originalsectionstyle
