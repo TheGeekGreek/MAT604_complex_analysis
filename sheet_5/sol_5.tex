@@ -1,0 +1,106 @@
+\input{header.tex}
+
+\title{Solutions Sheet 5}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+	\item 
+		~
+	\begin{enumerate}[label = (\alph*),wide = 0pt, itemsep=1.5ex]
+		\item We summarize the result in a lemma. 
+			\begin{lemma}
+				The power series
+				\begin{equation}
+					\sum_{\nu = 0}^\infty \frac{z^{2\nu}}{(2\nu)!} \qquad \text{and} \qquad \sum_{\nu = 0}^\infty \frac{z^{2\nu + 1}}{(2\nu + 1)!}
+				\end{equation}
+
+				\noindent have both radius of convergence $R = \infty$. Furthermore, for all $z \in \mathbb{C}$
+				\begin{equation}
+					\cosh z = \sum_{\nu = 0}^\infty \frac{z^{2\nu}}{(2\nu)!} \qquad \text{and} \qquad \sinh z = \sum_{\nu = 0}^\infty \frac{z^{2\nu + 1}}{(2\nu + 1)!}
+				\end{equation}
+				\noindent holds.
+				\label{lem:pow_cosh}
+			\end{lemma}
+
+			\begin{proof}
+				Fix $z \in \mathbb{C}$. We have 
+			\begin{equation}
+				\limsup_{\nu \to \infty} \abs[3]{\frac{z^{2\nu + 2}}{(2\nu + 2)!} \frac{(2\nu)!}{z^{2\nu}}} = \abs[0]{z}^2\limsup_{\nu \to \infty} \frac{1}{(2\nu + 2)(2\nu + 1)} = 0 < 1
+			\end{equation}
+
+			\noindent and
+			\begin{equation}
+			\limsup_{\nu \to \infty} \abs[3]{\frac{z^{2\nu + 3}}{(2\nu + 3)!} \frac{(2\nu + 1)!}{z^{2\nu + 1}}} = \abs[0]{z}^2\limsup_{\nu \to \infty} \frac{1}{(2\nu + 3)(2\nu + 2)} = 0 < 1.
+			\end{equation}
+
+			Since $z$ was arbitrary we conclude by the ratio test for series that both radii of convergence are $\infty$. Using the identities 
+			\begin{equation}
+				\cosh z = \cos(iz) \qquad \text{and} \qquad \sinh z = -i\sin(iz) \qquad \forall z \in \mathbb{C}
+			\end{equation}
+			\noindent and the definition of the trigonometric functions by series
+			\begin{equation}
+				\cos z := \sum_{\nu = 0}^\infty \frac{(-1)^\nu}{(2\nu)!}z^{2\nu} \qquad \text{and} \qquad \sin z := \sum_{\nu = 0}^\infty \frac{(-1)^{\nu}}{(2\nu + 1)!}z^{2\nu + 1}
+			\end{equation}
+
+			\noindent we get
+			\begin{equation}
+				\cosh z = \cos(iz) = \sum_{\nu = 0}^\infty \frac{(-1)^\nu}{(2\nu)!}(iz)^{2\nu} = \sum_{\nu = 0}^\infty \frac{(-1)^{2\nu}}{(2\nu)!}z^{2\nu} = \sum_{\nu = 0}^\infty \frac{z^{2\nu}}{(2\nu)!}
+			\end{equation}
+
+			\noindent and
+			\begin{equation}
+				\sinh z = -i\sin(iz) = -i \sum_{\nu = 0}^\infty \frac{(-1)^{\nu}}{(2\nu + 1)!}(iz)^{2\nu + 1} = \sum_{\nu = 0}^\infty \frac{(-1)^{2\nu}}{(2\nu + 1)!}z^{2\nu + 1} = \sum_{\nu = 0}^\infty \frac{z^{2\nu + 1}}{(2\nu + 1)!}
+			\end{equation}
+			\noindent for all $z \in \mathbb{Z}$.
+			\end{proof}
+			\begin{remark}
+				The power series given in lemma \ref{lem:pow_cosh} can be rewritten into the standard form
+				\begin{equation}
+					\sum_{\nu = 0}^\infty a_\nu (z - z_0)^\nu
+				\end{equation}
+
+				\noindent by considering apropriate sequences $(a_\nu)_{\nu \in \mathbb{N}}$. Also it is clearly seen that $z_0 = 0$ is the point of expansion.
+			\end{remark}
+
+		\item Define $a_\nu := (-1)^{\nu - 1}/\nu$ for $\nu \in \mathbb{N}$ and $a_0 := 0$. Since $(a_\nu)_{\nu \in \mathbb{N}}$ is convergent, the quotient criterion yields
+			\begin{equation}
+				R = \lim_{\nu \to \infty} \abs[3]{\frac{a_\nu}{a_{\nu + 1}}} = \lim_{\nu \to \infty}\abs[3]{\frac{(-1)^{\nu - 1}}{\nu} \frac{\nu + 1}{(-1)^{\nu}}} = 1 + \lim_{\nu \to \infty}\frac{1}{\nu} = 1. 
+			\end{equation}
+			Thus the logarithmic series converges in $\mathbb{E}$ since the point of expansion $z_0$ is clearly $0$. Since $R > 0$ we have that the limit function $f$ is holomorphic in $\mathbb{E}$ by the theorem on the \emph{interchangeability of differentiation and summation}. Furthermore, from the same theorem also follows that the derivative of the limit function coincides with the naive termwise differentiation of the power series within $\mathbb{E}$. Thus we get
+			\begin{equation}
+				f'(z) = \sum_{\nu = 1}^\infty \nu a_\nu z^{\nu-1} = \sum_{\nu = 1}^\infty (-z)^{\nu-1} = \sum_{\mu = 0}^\infty (-z)^\mu = \frac{1}{1 + z}
+			\end{equation}
+
+			\noindent by the formula for the sum of a geometric series (if $z \in \mathbb{E}$ so is $-z \in \mathbb{E}$).
+
+		\item Fix $z \in \mathbb{C}$ and let $a_\nu := (-1)^{\nu}/(2\nu + 1)z^{2\nu + 1}$ for $\nu \in \mathbb{N}_0$. By
+			\begin{align*}
+				\limsup_{\nu \to \infty} \abs[3]{\frac{a_{\nu + 1}}{a_{\nu}}} &= \limsup_{\nu \to \infty} \abs[3]{\frac{(-1)^{\nu + 1}z^{2\nu + 3}}{2\nu + 3}\frac{2\nu + 1}{(-1)^\nu z^{2\nu + 1}}}\\
+				&= \abs[0]{z}^2 \limsup_{\nu \to \infty} \frac{2\nu + 1}{2\nu + 3}\\
+				&= \abs[0]{z}^2
+			\end{align*}
+
+			\noindent we deduce that $\abs[0]{z}^2 < 1$ must hold that the series is convergent. This is equivalent to $z \in \mathbb{E}$. Thus the arcustangens series converges in $\mathbb{E}$ since the point of expansion $z_0$ is clearly $0$. Since $R > 0$ we have that the limit function $g$ is holomorphic in $\mathbb{E}$ by the theorem on the \emph{interchangeability of differentiation and summation}. Furthermore, from the same theorem also follows that the derivative of the limit function coincides with the naive termwise differentiation of the power series within $\mathbb{E}$. First of all we have to bring the power series in an apropriate form. We have
+			\begin{align*}
+				g(z) = \sum_{\nu = 0}^\infty a_\nu = \sum_{\nu = 0}^\infty b_\nu z^\nu \qquad \text{where} \qquad b_\nu := \begin{cases}
+					0 & \nu \equiv 0 \bmod 2,\\
+					1/\nu & \nu \equiv 1 \bmod 4,\\
+					-1/\nu & \nu \equiv 3 \bmod 4.
+				\end{cases}
+			\end{align*}
+			\noindent Hence
+			\begin{equation}
+				g'(z) = \sum_{\nu = 1}^\infty \nu b_\nu z^{\nu-1} = \sum_{\nu = 0}^\infty (-1)^\nu z^{2\nu} = \sum_{\nu = 0}^\infty \del[0]{-z^2}^\nu = \frac{1}{1 + z^2}
+			\end{equation}
+
+			\noindent by the formula for the sum of a geometric series (if $z \in \mathbb{E}$ so is $-z^2\in \mathbb{E}$).
+	\end{enumerate}
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
