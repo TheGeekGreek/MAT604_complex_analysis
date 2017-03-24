@@ -147,21 +147,52 @@
 
 			Hence $A_\nu = \intcc{\nu,\nu + 1}$ for $\nu = 0,\dots,n - 1$. Furthermore
 			\begin{align*}
-				\gamma_0 \ast \dots \ast \gamma_n(t) = \begin{cases}
+				\gamma_0 \ast \dots \ast \gamma_{n-1}(t) = \begin{cases}
 					\gamma_0(t) = \intcc{z_0,z_1} & t \in A_0,\\
 					\gamma_1(t + a_1 - b_0) = z_1 + (t - 1)(z_2 - z_1) & t \in A_1,\\	
 				\end{cases}
 			\end{align*}
 			\noindent and
 			\begin{equation}
-				\textstyle\gamma_0 \ast \dots \ast \gamma_n(t) = \gamma_\nu\del{t + a_\nu - b_0 - \sum_{\mu = 1}^{\nu-1} (b_\mu - a_\mu)} = z_\nu + (t - \nu)(z_{\nu + 1} - z_\nu)
+				\textstyle\gamma_0 \ast \dots \ast \gamma_{n-1}(t) = \gamma_\nu\del{t + a_\nu - b_0 - \sum_{\mu = 1}^{\nu-1} (b_\mu - a_\mu)} = z_\nu + (t - \nu)(z_{\nu + 1} - z_\nu)
 			\end{equation}
 			\noindent for $t \in A_\nu, \nu = 2,\dots,n - 1$. Hence we conclude that
 			\begin{equation}
 				\intcc{z_0,\dots,z_n} = \intcc{z_0,z_1} \ast \dots \ast \intcc{z_{n-1},z_n}.
 			\end{equation}
-		\item 
+		\item An integration path in $U$ is by definition a piecewise continuously differentiable mapping. Hence there exists a partition $a = t_0 < t_1 < \dots < t_n = b$ of $\intcc{a,b}$ such that $\gamma\vert_{\intcc{t_\nu,t_{\nu + 1}}}$ is continuously differentiable for $\nu = 0,\dots,n-1$. Let $\gamma_{\nu} := \gamma\vert_{\intcc{t_\nu,t_{\nu + 1}}}$ for $\nu = 0,\dots,n-1$. Clearly
+			\begin{equation}
+				\gamma_\nu : \intcc{t_\nu,t_{\nu + 1}} \to U
+			\end{equation}
+
+			Using the terminology established in part (a) we get
+			\begin{equation}
+				\textstyle I = \intcc{a,t_1 + \sum_{\nu = 1}^{n-1}(t_{\nu + 1} - t_\nu)} = \intcc{a,t_n} = \intcc{a,b}
+			\end{equation}
+			\noindent and
+			\begin{align*}
+				A_\nu = \begin{cases}
+					\intcc{a_0,b_0} = \intcc{a,t_1} & \nu = 0,\\
+					\intcc{t_1,b_1 - a_1 + b_0} = \intcc{t_1,t_2} & \nu = 1,\\
+					\intcc{b_0 + \sum_{\mu = 1}^{\nu-1} (b_\mu - a_\mu),b_0 + \sum_{\mu = 1}^{\nu}(b_\mu - a_\mu)} = \intcc{t_{\nu},t_{\nu + 1}} & \nu = 2,\dots,n - 1.
+				\end{cases}
+			\end{align*}
+
+			Furthermore
+			\begin{align*}
+				\gamma_0 \ast \dots \ast \gamma_{n-1}(t) = \begin{cases}
+					\gamma_0(t) = \gamma(t) & t \in A_0,\\
+					\gamma_1(t + a_1 - b_0) = \gamma(t) & t \in A_1,\\	
+					\gamma_\nu\del{t + a_\nu - b_0 - \sum_{\mu = 1}^{\nu-1} (b_\mu - a_\mu)} = \gamma(t) & t \in A_\nu, \nu = 2,\dots,n - 1.
+				\end{cases}
+			\end{align*}
+
+			Hence we conclude
+			\begin{equation}
+				\gamma_{0} \ast \dots \ast \gamma_{n-1} = \gamma.
+			\end{equation}
 	\end{enumerate}
+\item
 \end{enumerate}
 %\originalsectionstyle
 \printbibliography
