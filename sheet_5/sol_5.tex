@@ -64,7 +64,7 @@
 					\sum_{\nu = 0}^\infty a_\nu (z - z_0)^\nu
 				\end{equation}
 
-				\noindent by considering apropriate sequences $(a_\nu)_{\nu \in \mathbb{N}}$. Also it is clearly seen that $z_0 = 0$ is the point of expansion.
+				\noindent by considering apropriate sequences $(a_\nu)_{\nu \in \mathbb{N}_0}$. Also it is clearly seen that $z_0 = 0$ is the point of expansion.
 			\end{remark}
 
 		\item Define $a_\nu := (-1)^{\nu - 1}/\nu$ for $\nu \in \mathbb{N}$ and $a_0 := 0$. Since $(a_\nu)_{\nu \in \mathbb{N}}$ is convergent, the quotient criterion yields
@@ -250,7 +250,7 @@
 	\end{proposition}
 
 	\begin{proof}
-		Consider first the case where $z \in B_r(z_0)$. Then lemma \ref{lem:geo} yields
+		We use the fact, that if $\gamma$ is a path, $\sum f_\nu$, $f_\nu \in \mathscr{C}(\abs[0]{\gamma})$, a series of functions, which is uniformly convergent in $\abs[0]{\gamma}$, then $\sum\int_\gamma f_\nu = \int_\gamma \sum f_\nu$ (see \cite[163]{remmert2002funktionentheorie}). By lemma \ref{lem:geo} we know that the two series are normally convergent in $\partial B_r(z_0)$ and since every normally convergent series is locally uniformly convergent, the compactness of $\partial B_r(z_0)$ implies that the two series are uniformly convergent in $\partial B_r(z_0)$ (see \cite[92]{remmert2002funktionentheorie} and \cite[85]{remmert2002funktionentheorie}). Consider first the case where $z \in B_r(z_0)$. Then lemma \ref{lem:geo} yields
 		\begin{align*}
 			\int_{\partial B_r(z_0)} \frac{\d \zeta}{\zeta - z} &= \int_{\partial B_r(z_0)} \frac{1}{\zeta - z_0}\sum_{\nu = 0}^\infty \del{\frac{z - z_0}{\zeta - z_0}}^{\nu} \d \zeta\\
 			&= \sum_{\nu = 0}^\infty\int_{\partial B_r(z_0)} \frac{1}{\zeta - z_0}\del{\frac{z - z_0}{\zeta - z_0}}^{\nu} \d \zeta\\
