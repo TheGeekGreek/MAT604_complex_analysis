@@ -192,7 +192,87 @@
 				\gamma_{0} \ast \dots \ast \gamma_{n-1} = \gamma.
 			\end{equation}
 	\end{enumerate}
-\item
+\item 
+	~
+	\begin{lemma}
+		For $z_0 \in \mathbb{C}$ we have
+		\begin{equation}
+			\frac{1}{\zeta - z} = \frac{1}{\zeta - z_0} \sum_{\nu = 0}^\infty \del{\frac{z - z_0}{\zeta - z_0}}^{\nu} \qquad \text{for all } \zeta,z \text{ with } \abs[0]{z - z_0} < \abs[0]{\zeta - z_0}
+			\label{eq:ser_1}
+		\end{equation}
+		\noindent and
+		\begin{equation}
+			\frac{1}{\zeta - z} = -\frac{1}{z - z_0} \sum_{\nu = 0}^\infty \del{\frac{\zeta - z_0}{z - z_0}}^{\nu} \qquad \text{for all } \zeta,z \text{ with } \abs[0]{\zeta - z_0} < \abs[0]{z - z_0}.
+			\label{eq:ser_2}
+		\end{equation}
+		For $B_r(z_0)$ fixed, series (\ref{eq:ser_1}) converges normally as a function series in the argument $\zeta$ on $\partial B_r(z_0)$ for any $z \in B_r(z_0)$ whereas series (\ref{eq:ser_2}) converges normally as a function series in the argument $\zeta$ on $\partial B_r(z_0)$ for any $z \in \mathbb{C} \setminus \overline{B_r}(z_0)$.
+		\label{lem:geo}
+	\end{lemma}
+
+	\begin{proof}
+		In the first case we have
+		\begin{equation}
+			\frac{1}{\zeta - z} = \frac{1}{\zeta - z_0}\frac{\zeta - z_0}{\zeta - z} = \frac{1}{\zeta - z_0}\frac{1}{1 - (z - z_0)/(\zeta - z_0)} = \frac{1}{\zeta - z_0} \sum_{\nu = 0}^\infty \del{\frac{z - z_0}{\zeta - z_0}}^{\nu}
+		\end{equation}
+		\noindent since by assumption $\abs[0]{(z - z_0)/(\zeta - z_0)} < 1$ and in the second
+		\begin{equation}
+			\frac{1}{\zeta - z} = \frac{1}{z - z_0}\frac{z - z_0}{\zeta - z} = -\frac{1}{\zeta - z_0}\frac{1}{1 - (\zeta - z_0)/(z - z_0)} = -\frac{1}{\zeta - z_0} \sum_{\nu = 0}^\infty \del{\frac{\zeta - z_0}{z - z_0}}^{\nu}
+		\end{equation}
+		\noindent since again by assumption $\abs[0]{(\zeta - z_0)/(z - z_0)} < 1$.\\
+		Fix some $B_r(z_0)$. Let $z \in B_r(z_0)$. For any $\nu \in \mathbb{N}_0$ and $q := \abs[0]{z - z_0}/r$ we have
+		\begin{equation}
+			\max_{\zeta \in \partial B_r(z_0)}\abs[3]{\del{\frac{z - z_0}{\zeta - z_0}}^\nu} = \frac{\abs[0]{z - z_0}^\nu}{\min_{\zeta \in \partial B_r(z_0)}\abs[0]{\zeta - z_0}^\nu} = \del[3]{\frac{\abs[0]{z - z_0}}{r}}^\nu = q^\nu
+		\end{equation}
+		Hence if we define $f_\nu: \partial B_r(z_0) \to \mathbb{C}$ by
+		\begin{equation}
+			f_\nu(\zeta) := \del{\frac{z - z_0}{\zeta - z_0}}^\nu \qquad \nu \in \mathbb{N}_0
+		\end{equation}
+		\noindent and let $\zeta \in \partial B_r(z_0)$ fixed, we have
+		\begin{equation}
+			\sum_{\nu = 0}^\infty \abs[0]{f_\nu}_{\partial B_r(z_0)} = \sum_{\nu = 0}^\infty q^\nu < \infty
+		\end{equation}
+		\noindent since $\partial B_r(z_0)$ is compact and $q < 1$. Thus the series (\ref{eq:ser_1}) is normally convergent. If $z \in \mathbb{C}\setminus \overline{B_r}(z_0)$, we have
+		\begin{equation}
+			\max_{\zeta \in \partial B_r(z_0)}\abs[3]{\del{\frac{\zeta - z_0}{z - z_0}}^\nu} = \frac{\max_{\zeta \in \partial B_r(z_0)}\abs[0]{\zeta - z_0}^\nu}{\abs[0]{z - z_0}^\nu} = \del[3]{\frac{r}{\abs[0]{z - z_0}}}^\nu = p^\nu
+		\end{equation}
+
+		\noindent for $p := r/\abs[0]{z - z_0}$. Observe again that $p < 1$ since $\abs[0]{z - z_0} > r$ by assumption. Hence we conclude similarly as in the previous case that the series (\ref{eq:ser_2}) is normally convergent.
+	\end{proof}
+
+	\begin{proposition}
+		For $z_0 \in \mathbb{C}$ we have
+		\begin{align}
+			\frac{1}{2\pi i}\int_{\partial B_r(z_0)} \frac{\d \zeta}{\zeta - z} = \begin{cases}
+				1 & z \in B_r(z_0),\\
+				0 & z \in \mathbb{C} \setminus \overline{B_r}(z_0).
+			\end{cases}
+		\end{align}
+	\end{proposition}
+
+	\begin{proof}
+		Consider first the case where $z \in B_r(z_0)$. Then lemma \ref{lem:geo} yields
+		\begin{align*}
+			\int_{\partial B_r(z_0)} \frac{\d \zeta}{\zeta - z} &= \int_{\partial B_r(z_0)} \frac{1}{\zeta - z_0}\sum_{\nu = 0}^\infty \del{\frac{z - z_0}{\zeta - z_0}}^{\nu} \d \zeta\\
+			&= \sum_{\nu = 0}^\infty\int_{\partial B_r(z_0)} \frac{1}{\zeta - z_0}\del{\frac{z - z_0}{\zeta - z_0}}^{\nu} \d \zeta\\
+			&= \sum_{\nu = 0}^\infty (z - z_0)^\nu \int_{\partial B_r(z_0)} \frac{\d\zeta}{(\zeta - z_0)^{\nu + 1}}\\
+			&= 2\pi i
+		\end{align*}
+
+		\noindent since for $n \in \mathbb{Z}$
+		\begin{align}
+			\int_{\partial B_r(z_0)} \del[0]{\zeta - z_0}^n \d\zeta = \begin{cases}
+				0 & n \neq -1,\\
+				2\pi  & n = -1.
+			\end{cases}
+		\end{align}
+
+		In the case $z \in \mathbb{C} \setminus \overline{B_r}(z_0)$ we get
+		\begin{align*}
+			\int_{\partial B_r(z_0)} \frac{\d \zeta}{\zeta - z} &= -\int_{\partial B_r(z_0)} \frac{1}{z - z_0} \sum_{\nu = 0}^\infty \del{\frac{\zeta - z_0}{z - z_0}}^{\nu} \d \zeta\\
+			&= -\sum_{\nu = 0}^\infty \frac{1}{(z - z_0)^{\nu + 1}}\int_{\partial B_r(z_0)} (\zeta - z_0)^\nu \d \zeta\\
+			&= 0. 
+		\end{align*}
+	\end{proof}
 \end{enumerate}
 %\originalsectionstyle
 \printbibliography
