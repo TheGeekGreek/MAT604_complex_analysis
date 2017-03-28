@@ -1,0 +1,28 @@
+\input{header.tex}
+
+\title{Solutions Sheet 6}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+	\item
+		~
+		\begin{enumerate}[label = (\alph*),wide = 0pt, itemsep=1.5ex]
+			\item Let $r \in \mathbb{R}_{>0} \setminus \cbr[0]{1}$. Partial fraction decomposition yields
+				\begin{align}
+					\int_{\partial B_r(0)} \frac{2\zeta - 1}{\zeta(\zeta - 1)}\d \zeta = \int_{\partial B_r(0)} \frac{\d\zeta}{\zeta} + \int_{\partial B_r(0)}\frac{\d\zeta}{\zeta - 1} = \begin{cases}
+						4\pi i & 1 < r,\\
+						2\pi i & 0 < r < 1.
+					\end{cases}
+				\end{align} 
+		
+		
+		\end{enumerate}
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
