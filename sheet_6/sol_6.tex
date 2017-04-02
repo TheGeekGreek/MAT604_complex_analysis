@@ -19,9 +19,191 @@
 						2\pi i & 0 < r < 1.
 					\end{cases}
 				\end{align} 
-		
-		
+			\item The solution of this exercise is based on the following proposition (see \cite[165]{remmert2002funktionentheorie}).
+				\begin{proposition}
+					Let $D \subseteq \mathbb{C}$ be open and $f \in \mathscr{C}(D)$. For a function $F: D \to \mathbb{C}$ we have that $F$ is holomorphic in $D$ and $F' = f$ if and only if for all paths $\gamma$ in $D$ we have
+					\begin{equation}
+						\int_{\gamma} f \d \zeta = F(\gamma(b)) - F(\gamma(a)).
+					\end{equation}
+				\end{proposition}
+				\begin{enumerate}[label = (\roman*),wide = 0pt, itemsep=1.5ex]
+					\item Clearly $f_1 \in \mathscr{C}(\mathbb{C})$ as a composition of continuous functions. Define $F_1: \mathbb{C} \to \mathbb{C}$ by
+						\begin{equation}
+							F_1(z) := \frac{1}{1 + i}\sin\del[0]{(1 + i)z}.
+						\end{equation}
+
+						$F_1$ is clearly entire since
+						\begin{equation}
+							F_1'(z) = \frac{1}{1 + i}\sin'\del[0]{(1 + i)z} = \cos\del[0]{(1 + i)z} = f_1(z).
+						\end{equation}
+
+						\noindent exists for all $z \in \mathbb{C}$ since 
+						\begin{equation}
+							\sin'(z) = \frac{1}{2i}\del[1]{\del[0]{e^{iz}}' - \del[0]{e^{-iz}}'} = \frac{1}{2i}\del[0]{ie^{iz} + ie^{-iz}} = \cos(z).
+						\end{equation}
+
+						Hence for any path $\gamma$ starting at $z_0$ and ending at $z_1$ we have
+						\begin{equation}
+							\int_\gamma f_1 \d \zeta = F(2i) - F(1 + i) = \frac{1}{1 + i}\del[0]{\sin(2i - 2) - \sin(2i)}. 
+						\end{equation}
+					\item Again clearly $f_2 \in \mathscr{C}(\mathbb{C}^\times)$. Define $F_2: \mathbb{C}^\times \to \mathbb{C}$ by
+						\begin{equation}
+							F_2(z) := \frac{i}{3}z^3 + z + 2i\frac{1}{z}.
+						\end{equation}
+
+						Then we have $F_2' = f_2$ and so
+						\begin{equation}
+							\int_\gamma f_2 \d \zeta = F_2(2i) - F_2(1 + i) = \frac{7}{3} + \frac{2}{3}i.
+						\end{equation}
+					\item Again $f_3 \in \mathscr{C}(\mathbb{C} \setminus \cbr[0]{-1})$. Define $F_3: \mathbb{C} \setminus \cbr[0]{-1} \to \mathbb{C}$ by
+						\begin{equation}
+							F_3(z) := -\frac{1}{2}\frac{1}{(z + 1)^2}.
+						\end{equation}
+						Clearly $F_3' = f_3$ and so
+						\begin{equation}
+							\int_\gamma f_3 \d \zeta = F_3(2i) - F_3(1 + i) = \frac{3}{25}. 
+						\end{equation}
+
+					\item Again $f_4 \in \mathscr{C}(\mathbb{C})$. Define $F_4: \mathbb{C} \to \mathbb{C}$ by
+						\begin{equation}
+							F_4(z) := \frac{1}{2i}e^{iz^2}.
+						\end{equation}
+
+						Clearly $F_4' = f_4$ and thus we get
+						\begin{equation}
+							\int_\gamma f_4 \d \zeta = F_4(2i) - F_4(1 + i) = \frac{1}{2i}\del[0]{e^{-4i} - e^{-2}}.
+						\end{equation}
+				\end{enumerate}
 		\end{enumerate}
+
+	\item 
+		\begin{proposition}[Zentrierungslemma for Rectangles]
+			Let $D \subseteq \mathbb{C}$ be open and $f: D \to \mathbb{C}$ holomorphic in $D$. Furthermore let $R \subseteq D$ be a rectangle in $D$ such that $\overline{R} \subseteq D$. Let $z \in R$. If $B_r(z) \subseteq R$, we have 
+			\begin{equation}
+				\int_{\partial R} f\d \zeta = \int_{\partial B_r(z)} f\d \zeta.
+			\end{equation}	
+			\label{prop:zentrierungslemma}
+		\end{proposition}
+
+		\begin{proof}
+			We make use of the labeling on the separate sheet. Clearly
+			\begin{equation}
+				\partial R = \sbr[0]{z_0,z_1,z_2,z_3,z_0} \qquad \text{and} \qquad 	B_r(z) = \alpha + \beta.
+			\end{equation}
+			Define
+			\begin{align*}
+				\gamma_1 &:= \intcc{w_3,z_1} + \intcc{z_1,z_2} + \intcc{z_2,w_0} + \intcc{w_0,w_1} -\alpha + \intcc{w_2,w_3},\\ 
+				\gamma_2 &:= \intcc{z_0,w_3} - \intcc{w_2,w_3} - \beta - \intcc{w_0,w_1} + \intcc{w_0,z_3} + \intcc{z_3,z_0}.
+			\end{align*}
+			Hence
+			\begin{align*}
+				\int_{\gamma_1 + \gamma_2} f \d \zeta &= \int_{\intcc{z_0,w_3} + \intcc{w_3,z_1} + \intcc{z_1,z_2} + \intcc{z_2,w_0} + \intcc{w_0,z_3} + \intcc{z_3,z_0}}f\d \zeta - \int_{\alpha + \beta}f\d \zeta\\
+				&= \int_{\partial R}f\d \zeta - \int_{\partial B_r(z)} f \d\zeta.
+			\end{align*}
+			Since $\overline{R} \subseteq D$, there exists a rectangle $R'$ with $\overline{R} \subseteq R' \subseteq D$. Clearly a rectangle is a star-shaped domain with any center since it is convex. Hence the Cauchy integral theorem for star-shaped domains implies that
+			\begin{equation}
+				\int_{\gamma_1} f \d \zeta = 0 \qquad \text{and} \qquad \int_{\gamma_2} f \d \zeta = 0
+			\end{equation}
+			\noindent since $\gamma_1$ and $\gamma_2$ are closed. Thus
+			\begin{equation}
+				\int_{\partial R}f\d \zeta - \int_{\partial B_r(z)} f \d\zeta = \int_{\gamma_1 + \gamma_2} f \d \zeta = \int_{\gamma_1} f \d \zeta + \int_{\gamma_2} f \d \zeta = 0. 
+			\end{equation}
+			This implies
+			\begin{equation}
+				\int_{\partial R}f\d \zeta = \int_{\partial B_r(z)} f \d\zeta.
+			\end{equation}
+		\end{proof}
+
+		\begin{theorem}[Cauchy Integral Formula for Rectangles]
+			Let $f: D \to \mathbb{C}$ be holomorphic in $D$ and let $R$ be a rectangle in $R$ such that $\overline{R} \subseteq D$. Then we have for any $z \in R$:
+			\begin{equation}
+				f(z) = \frac{1}{2\pi i}\int_{\partial R}\frac{f(\zeta)}{\zeta - z} \d \zeta.
+			\end{equation}
+		\end{theorem}
+
+		\begin{proof}
+			Let $z \in R$. Define $g: D \to \mathbb{C}$ by  
+			\begin{align}
+				g(\zeta) := \begin{cases}
+					\frac{f(\zeta) - f(z)}{\zeta - z} & \zeta \in D \setminus \cbr[0]{z},\\
+					f'(z) & \zeta = z.
+				\end{cases}
+			\end{align}
+			Then $g$ is holomorphic in $D\setminus \cbr[0]{z}$ and continuous at $z$. Now we find $\overline{B_r}(z) \subseteq R$. Since $\overline{B_r}(z)$ is compact we have that $\abs[0]{g} : \overline{B_r}(z) \to \mathbb{R}$ is bounded, say $\abs[0]{g}_{\overline{B_r}(z)} \leq M$. Fix $0 < \varepsilon < r$. Then the standard estimate and proposition \ref{prop:zentrierungslemma} yields
+			\begin{equation}
+				\abs[3]{\int_{\partial R}g \d \zeta} = \abs[3]{\int_{\partial B_\varepsilon(z)} g \d \zeta} \leq \abs[0]{g}_{\partial B_\varepsilon(z)}2\pi\varepsilon \leq \abs[0]{g}_{B_\varepsilon(z)}2\pi\varepsilon \leq 2\pi M \varepsilon.
+			\end{equation}
+			Hence 
+			\begin{equation}
+				\int_{\partial R}g \d \zeta = 0.
+				\label{eq:intg0}
+			\end{equation}
+
+			Using again proposition \ref{prop:zentrierungslemma} we find
+			\begin{equation}
+				\int_{\partial R}\frac{\d \zeta}{\zeta - z} = 2\pi i.
+				\label{eq:int}
+			\end{equation}
+			Putting (\ref{eq:intg0}) and (\ref{eq:int}) together yields
+			\begin{equation}
+				0 = \int_{\partial R}g \d \zeta= \int_{\partial R} \frac{f(\zeta)}{\zeta - z} \d \zeta - f(z)\int_{\partial R}\frac{\d \zeta}{\zeta - z}= \int_{\partial R} \frac{f(\zeta)}{\zeta - z} \d \zeta - 2\pi i f(z).
+			\end{equation}
+		\end{proof}
+	\item
+		~
+		\begin{enumerate}[label = (\roman*),wide = 0pt, itemsep=1.5ex]
+			\item Consider the function $f: U \to \mathbb{C}$ defined by
+				\begin{equation}
+					f(z) := \frac{(z - 2)(z^7 + 1)}{z^2(z^4 + 1)}
+				\end{equation}
+				\noindent where $U$ is $\mathbb{C}$ without the roots of the denominator. The roots are given by $0,e^{\pm i\pi/4}$ and $e^{\pm i3\pi/4}$. Hence $\overline{B_1}(2) \subseteq U$. Since $f$ is holomorphic in $U$ as a well-defined rational function, the Cauchy integral formula yields
+	\begin{equation}
+		\int_{\partial B_1(2)}\frac{z^7 + 1}{z^2(z^4 + 1)}\d z = \int_{\partial B_1(2)} \frac{f(z)}{z - 2}\d z = 2\pi i f(2) = 0.
+	\end{equation}
+			\item 
+			\item
+			\item Partial fraction decomposition yields
+				\begin{equation}
+					\int_{\partial B_3(0)} \frac{\cos(\pi z)}{z^2 - 1}\d z = \frac{1}{2}\sbr{\int_{\partial B_3(0)}\frac{\cos(\pi z)}{z - 1}\d z - \int_{\partial B_3(0)}\frac{\cos(\pi z)}{z + 1}\d z}
+				\end{equation}
+
+				Now $f(z) := \cos(\pi z)$ is entire, and since $\pm 1 \in B_3(0)$ we get
+				\begin{equation}
+					\int_{\partial B_3(0)} \frac{\cos(\pi z)}{z^2 - 1}\d z = \pi i \sbr[0]{f(1) - f(-1)} = 0.
+				\end{equation}
+		\end{enumerate}
+	\item
+		~
+		\begin{enumerate}[label = (\alph*),wide = 0pt, itemsep=1.5ex]
+			\item Partial fraction decomposition yields for $z\in \mathbb{C} \setminus \overline{\mathbb{E}}$ fixed
+				\begin{equation}
+					f(z) = -\frac{1}{2\pi i z} \sbr{\int_{\partial \mathbb{E}} \frac{\d \zeta}{\zeta} - \int_{\partial \mathbb{E}}\frac{\d \zeta}{\zeta - z}} = -\frac{1}{2\pi i z}2\pi i = -\frac{1}{z}.
+				\end{equation}
+
+			\item This can directly be copied from my solution to exercise $2$ on sheet $4$ with slight improvements.
+				\begin{lemma}
+					For $z \in \mathbb{C} \setminus \cbr[0]{1}$ and $k \in \mathbb{N}_0$ we have 
+		\begin{equation}
+			\frac{\d^k}{\d z^k} \frac{1}{1 - z} = \frac{k!}{(1 - z)^{k + 1}}.
+		\end{equation}
+		\label{lem:ind}
+	\end{lemma}
+
+	\begin{proof}
+		Proof by induction on $k \in \mathbb{N}_0$. The statement obviously holds for $k = 0$. Assume the statement holds for some $k \in \mathbb{N}_0$. Then we get
+		\begin{align*}
+			\frac{\d^{k+1}}{\d z^{k+1}} \frac{1}{1 - z} &= \frac{\d}{\d z} \sbr[3]{\frac{\d^k}{\d z^k} \frac{1}{1 - z}}\\
+			&= \frac{\d}{\d z} \frac{k!}{(1 - z)^{k + 1}}\\
+			&= k!\frac{(k + 1)(1 - z)^k}{(1 - z)^{2k + 2}}\\
+			&= \frac{(k + 1)!}{(1 - z)^{k + 2}}.
+		\end{align*}
+	\end{proof}
+
+	The geometric series $\sum_{\nu = 0}^\infty z^\nu$ converges for all $z \in \mathbb{E}$. Hence by the theorem on the interchangeability of differentiation and summation \cite[110]{remmert2002funktionentheorie} we have that the limit function is differentiable within the radius of convergence (here $R = 1$) and the $k$-th derivative is given by
+	\begin{equation}
+		\frac{\d^k}{\d z^k}\frac{1}{1 - z} = \frac{\d^k}{\d z^k} \sum_{\nu = 0}^\infty z^\nu = \sum_{\nu \geq k} k! {\nu \choose k} z^{\nu - k} \qquad k\in \mathbb{N}_0, z \in \mathbb{E}.
+	\end{equation}
+ 		\end{enumerate}
 \end{enumerate}
 %\originalsectionstyle
 \printbibliography
