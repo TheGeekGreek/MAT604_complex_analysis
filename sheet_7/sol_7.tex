@@ -1,0 +1,60 @@
+\input{header.tex}
+
+\title{Solutions Sheet 7}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+	\item
+		We will abreviate $\mathbb{C}^- := \mathbb{C} \setminus \mathbb{R}_{\leq 0}$.
+		\begin{enumerate}[label = (\alph*),wide = 0pt, itemsep=1.5ex]
+			\item The set $\mathbb{C}^-$ is clearly a star shaped domain with possible centers on the ray $\mathbb{R}_{>0}$. Furtheremore, the function $1/z$ is holomorphic in $\mathbb{C}^-$ since it is a well-defined rational function there. By the Cauchy integral theorem for star shaped domains $f$ has a primitive $F: \mathbb{C}^- \to \mathbb{C}$ which is explicitely given by 
+				\begin{equation}
+					F(z) := \int_{\intcc{z_0,z}} \frac{\d\zeta}{\zeta}
+				\end{equation}
+				\noindent for any $z_0 \in \mathbb{R}_{>0}$. The choice $z_0 = 1$ yields
+				\begin{equation}
+					F(1) = \int_{\intcc{1,1}} \frac{\d\zeta}{\zeta} = 0
+				\end{equation}
+				\noindent since the path $\intcc{1,1}(t) = 1$, $t \in \intcc{0,1}$, is clearly closed (we have that $\intcc{1,1}(0) = 1 = \intcc{1,1}(1)$) and thus again the Cauchy integral theorem implies that the integral over any closed path vanishes. Hence the primitive $F$ of $1/z$ on $\mathbb{C}^-$ fulfilling $F(1) = 0$ is given by 
+				\begin{equation}
+					\boxed{F(z) = \int_{\intcc{1,z}} \frac{\d\zeta}{\zeta} \qquad z \in \mathbb{C}^-.}
+				\end{equation}
+			\item Let $z_0 \in \mathbb{C}^-$. Let $B_r(z_0)$ denote the largest ball around $z_0$ contained in $\mathbb{C}^-$. By the Cauchy-Taylor expansion theorem we have that 
+				\begin{equation}
+					F = \sum_{\nu = 0}^\infty a_\nu (z - z_0)^\nu \qquad a_\nu = \frac{F^{(\nu)}(z_0)}{\nu !}
+				\end{equation}
+				\noindent in $B_r(z_0)$ since $F$ is clearly holomorphic in $\mathbb{C}^-$ as a primitive. In order to calculate $F^{(\nu)}$, we have to compute $f^{(\nu)}$ since $F' = f$.
+				\begin{lemma}
+					Consider the function $f: \mathbb{C}^\times \to \mathbb{C}$ defined by $f(z) := 1/z$. Then
+					\begin{equation}
+						f^{(\nu)}(z_0) = (-1)^{\nu}\frac{\nu !}{z^{\nu + 1}_0} \qquad \nu \in \mathbb{N}_0, z_0 \in \mathbb{C}^-.
+					\end{equation}
+					\label{lem:derf}
+				\end{lemma}
+
+				\begin{proof}
+					Proof by induction over $\nu \in \mathbb{N}_0$. For $\nu = 0$ the equation clearly holds. Assume it is true for some $\nu \in \mathbb{N}_0$. Then 
+					\begin{equation}
+						f^{(\nu + 1)}(z_0) = \del[1]{f^{(\nu)}}'(z_0) = (-1)^\nu \nu! (-(\nu + 1))\frac{1}{z_0^{\nu + 2}} = (-1)^{\nu + 1}\frac{(\nu + 1)!}{z_0^{\nu + 2}}.
+					\end{equation}
+				\end{proof}
+
+				Since $F^{(\nu)}(z_0)/\nu! = f^{(\nu - 1)}(z_0)/\nu !$ for all $\nu \in \mathbb{N}$, lemma \ref{lem:derf} implies that 
+				\begin{equation}
+					\boxed{F = F(z_0) + \sum_{\nu = 1}^\infty\frac{(-1)^{\nu - 1}}{\nu}\frac{1}{z_0^\nu} (z - z_0)^\nu \qquad z \in B_r(z_0).}
+				\end{equation}
+				By
+				\begin{equation}
+					\limsup_{\nu \to \infty} \abs[3]{\frac{(-1)^{\nu - 1}}{\nu}\frac{1}{z_0^\nu}}^{1/\nu} = \frac{1}{\abs[0]{z_0}}\limsup_{\nu \to \infty}\frac{1}{\nu^{1/\nu}} = \frac{1}{\abs[0]{z_0}}\lim_{\nu \to \infty}\frac{1}{\nu^{1/\nu}} = \frac{1}{\abs[0]{z_0}}
+				\end{equation}
+				\noindent we see that $R = \abs[0]{z_0}$ using the Cauchy-Hadamard formula.
+		\end{enumerate}
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
