@@ -54,6 +54,69 @@
 				\end{equation}
 				\noindent we see that $R = \abs[0]{z_0}$ using the Cauchy-Hadamard formula.
 		\end{enumerate}
+
+	\item
+		For all $z \in B^\times_{2\pi}(0)$ we have that
+		\begin{equation}
+			\frac{e^z - 1}{z} = \sum_{\nu = 1}^{\infty}\frac{z^{\nu - 1}}{\nu !} = \sum_{\mu = 0}^\infty \frac{z^\mu}{(\mu + 1)!}.
+			\label{eq:pow}
+		\end{equation} 
+		From (\ref{eq:pow}) it is immediate that
+		\begin{equation}
+			\lim_{z \to 0}\frac{e^z - 1}{z} = \lim_{z \to 0} \sum_{\mu = 0}^\infty \frac{z^\mu}{(\mu + 1)!} = 1
+		\end{equation}
+		\noindent since the radius of convergence of the right side in (\ref{eq:pow}) is $\infty$ and thus $\sum_{\mu = 0}^\infty \frac{z^\mu}{(\mu + 1)!}$ is clearly continuous at $0$. Hence $f \in \mathscr{C}(B_{2\pi}(0))$ and $f \in \mathcal{O}(B^\times_{2\pi}(0))$. Since by continuity $f$ is bounded on any compactum $\overline{B_\varepsilon}(0)$, $0 < \varepsilon < 2\pi$, Riemann's theorem on removable singularities implies that $f \in \mathcal{O}(B_{2\pi}(0))$. Now the largest disc $B_{r}(0)$ contained in $B_{2\pi}(0)$ is $B_{2\pi}(0)$ itself, and thus by the Cauchy-Taylor expansion theorem $f$ can be Taylor expanded around $0$. The expansion is of the form
+		\begin{equation}
+			f(z) = \sum_{\nu = 0}^\infty a_\nu z^\nu = \sum_{\nu = 0}^\infty \frac{f^{(\nu)}(0)}{\nu !}z^\nu = \sum_{\nu = 0}^\infty \frac{B_\nu}{\nu !}z^\nu
+		\end{equation}
+		\noindent where $B_\nu := f^{(\nu)}(0)$ for all $\nu \in \mathbb{N}_0$.
+		
+		\begin{enumerate}[label = (\roman*),wide = 0pt, itemsep=1.5ex]
+			\item Clearly we have $B_0 = f^{(0)}(0) = f(0) = 1$. Furthermore, applying the complex version of de l'Hopital rule (justification needed) twice we get
+				\begin{equation*}
+					B_1 = f'(0) = \lim_{z \to 0} \frac{\d}{\d z}\frac{z}{e^z - 1} = \lim_{z \to 0} \frac{e^z - 1 - ze^z}{(e^z - 1)^2} = \lim_{z \to 0} \frac{-ze^z}{2e^z - 2} = \lim_{z \to 0} \frac{-e^z - ze^z}{2e^z} = - \frac{1}{2}.
+				\end{equation*}
+
+				Next we consider the function $f(z) + z/2$. We claim that this function is even. Indeed, if $z \neq 0$ we have 
+				\begin{align*}
+					f(-z) - \frac{z}{2} &= \frac{-z}{e^{-z} - 1} - \frac{z}{2} = -\frac{z(1 + e^{-z})}{2(e^{-z} - 1)} = -\frac{z(e^z + 1)}{2(1 - e^z)}= \frac{z(e^z + 1)}{2(e^z - 1)}\\
+					&= \frac{z(e^z - 1 + 2)}{2(e^z - 1)}= \frac{z}{e^z - 1} + \frac{z}{2}= f(z) + \frac{z}{2}.
+				\end{align*}
+			Now we have 
+			\begin{equation}
+				f(z) + \frac{z}{2} = 1 + \sum_{\nu = 2}^\infty \frac{B_\nu}{\nu !} z^\nu \qquad z \in B_{z\pi}(0).
+			\end{equation}
+			Since $f(z) + z/2$ is even, we get
+			\begin{equation}
+				0 = \sum_{\nu = 2}^\infty \frac{B_\nu}{\nu !} z^\nu - \sum_{\nu = 2}^\infty \frac{B_\nu}{\nu !} (-1)^\nu z^\nu = \sum_{\nu = 2}^\infty \frac{B_\nu}{\nu !} (1 + (-1)^{\nu+1})z^\nu = 2\sum_{\nu = 1}^\infty \frac{B_{2\nu + 1}}{(2\nu + 1)!}z^{2\nu + 1}
+			\end{equation}
+			The uniqueness of Taylor coefficients therefore implies that $B_{2\nu + 1} = 0$ for all $\nu \in \mathbb{N}$.
+		\item Since both $e^z - 1 = \sum_{\nu = 1}^\infty\frac{z^\nu}{\nu!}$ and $\sum_{\nu = 0}^\infty\frac{B_\nu}{\nu!}z^\nu$ have radius of convergence $2\pi$ around $0$, the product theorem for power series \cite[195]{remmert2002funktionentheorie} implies that 
+			\begin{equation}
+				z = (e^z - 1)\sum_{\nu = 0}^\infty \frac{B_\nu}{\nu !}z^\nu= \del[3]{\sum_{\nu = 1}^\infty \frac{z^\nu}{\nu!}} \del[3]{\sum_{\nu = 0}^\infty \frac{B_\nu}{\nu!}z^\nu}= \sum_{\lambda = 0}^\infty \del[3]{\sum_{\mu + \nu = \lambda}a_\mu \frac{B_\nu}{\nu !}}z^\lambda
+			\end{equation}
+
+			\noindent where $a_\mu := 1/\mu!$ for $\mu \in \mathbb{N}$ and $a_0 := 0$. By the uniqueness of the Taylor coefficients we get
+			\begin{equation}
+				0 = \sum_{\mu + \nu = \lambda}a_\mu\frac{B_\nu}{\nu!} = \sum_{\nu = 0}^\lambda a_{\lambda - \nu}\frac{B_\nu}{\nu!} = \sum_{\nu = 0}^{\lambda - 1} \frac{B_\nu}{\nu!(\lambda - \nu)!} = \frac{1}{\lambda !}\sum_{\nu = 0}^{\lambda - 1}{\lambda \choose \nu}B_\nu
+			\end{equation}
+
+			\noindent for all $\lambda \in \mathbb{N}_{>1}$ or equivalently
+			\begin{equation}
+				\boxed{\sum_{\nu = 0}^{\lambda - 1}{\lambda \choose \nu}B_\nu = 0 \qquad \lambda \in \mathbb{N}_{>0}.}
+			\end{equation}
+
+		\item Showing that $B_\nu \in \mathbb{Q}$ for all $\nu \in \mathbb{N}_0$ is a simple proof by induction using (ii) and the fact that the binomial coefficients are integers. The case $\nu = 0,1$ is clear since $B_0 = 1 \in \mathbb{Q}$ and $B_1 = -1/2 \in \mathbb{Q}$. Hence assume that the statement holds for some $\lambda \in \mathbb{N}_{>1}$. Then (ii) yields
+			\begin{equation}
+				B_{\lambda+1} = -\frac{1}{{\lambda + 2 \choose \lambda + 1}}\sum_{\nu = 0}^{\lambda}{\lambda + 2\choose \nu}B_\nu
+			\end{equation}
+			\noindent but this is a sum of integers and rational numbers, hence rational. Therefore we conclude by the principle of mathematical induction.\\
+			Towards a contradiction, assume that the sequence $(B_\nu)_{\nu \in \mathbb{N}_0}$ is bounded, i.e. $\abs[0]{B_\nu} \leq M$ for some $M > 0$. By
+			\begin{equation}
+				0 \leq \limsup_{\nu \to \infty} \abs{\frac{B_\nu}{\nu!}}^{1/\nu} = \limsup_{\nu \to \infty}\frac{\abs[0]{B_\nu}^{1/\nu}}{(\nu !)^{1/\nu}} \leq \limsup_{\nu \to \infty} \frac{M^{1/\nu}}{(\nu !)^{1/\nu}} = 0
+			\end{equation}
+			\noindent we get $R = \infty$ by Cauchy-Hadamard. This contradicts the finite radius of convergence of $2\pi$. Hence $(B_\nu)_{\nu \in \mathbb{N}_0}$ is unbounded.
+		\end{enumerate}
 \end{enumerate}
 %\originalsectionstyle
 \printbibliography
