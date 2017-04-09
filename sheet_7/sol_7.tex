@@ -72,12 +72,7 @@
 		\noindent where $B_\nu := f^{(\nu)}(0)$ for all $\nu \in \mathbb{N}_0$.
 		
 		\begin{enumerate}[label = (\roman*),wide = 0pt, itemsep=1.5ex]
-			\item Clearly we have $B_0 = f^{(0)}(0) = f(0) = 1$. Furthermore, applying the complex version of de l'Hopital rule (justification needed) twice we get
-				\begin{equation*}
-					B_1 = f'(0) = \lim_{z \to 0} \frac{\d}{\d z}\frac{z}{e^z - 1} = \lim_{z \to 0} \frac{e^z - 1 - ze^z}{(e^z - 1)^2} = \lim_{z \to 0} \frac{-ze^z}{2e^z - 2} = \lim_{z \to 0} \frac{-e^z - ze^z}{2e^z} = - \frac{1}{2}.
-				\end{equation*}
-
-				Next we consider the function $f(z) + z/2$. We claim that this function is even. Indeed, if $z \neq 0$ we have 
+			\item Clearly we have $B_0 = f^{(0)}(0) = f(0) = 1$. Using the formula from (ii) with $n = 2$ we get $1 + 2B_1 = 0$ which is equivalent to $B_1 = -1/2$. Next we consider the function $f(z) + z/2$. We claim that this function is even. Indeed, if $z \neq 0$ we have 
 				\begin{align*}
 					f(-z) - \frac{z}{2} &= \frac{-z}{e^{-z} - 1} - \frac{z}{2} = -\frac{z(1 + e^{-z})}{2(e^{-z} - 1)} = -\frac{z(e^z + 1)}{2(1 - e^z)}= \frac{z(e^z + 1)}{2(e^z - 1)}\\
 					&= \frac{z(e^z - 1 + 2)}{2(e^z - 1)}= \frac{z}{e^z - 1} + \frac{z}{2}= f(z) + \frac{z}{2}.
@@ -103,7 +98,7 @@
 
 			\noindent for all $\lambda \in \mathbb{N}_{>1}$ or equivalently
 			\begin{equation}
-				\boxed{\sum_{\nu = 0}^{\lambda - 1}{\lambda \choose \nu}B_\nu = 0 \qquad \lambda \in \mathbb{N}_{>0}.}
+				\boxed{\sum_{\nu = 0}^{\lambda - 1}{\lambda \choose \nu}B_\nu = 0 \qquad \lambda \in \mathbb{N}_{>1}.}
 			\end{equation}
 
 		\item Showing that $B_\nu \in \mathbb{Q}$ for all $\nu \in \mathbb{N}_0$ is a simple proof by induction using (ii) and the fact that the binomial coefficients are integers. The case $\nu = 0,1$ is clear since $B_0 = 1 \in \mathbb{Q}$ and $B_1 = -1/2 \in \mathbb{Q}$. Hence assume that the statement holds for some $\lambda \in \mathbb{N}_{>1}$. Then (ii) yields
