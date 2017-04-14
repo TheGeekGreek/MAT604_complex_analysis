@@ -1,0 +1,49 @@
+\input{header.tex}
+
+\title{Solutions Sheet 8}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+	\item We follow \cite[99--101]{fischer2003funktionentheorie}. Let $U := \mathbb{C} \setminus \cbr[0]{\pm e^{\pm i\pi/4}}$ and define $F: U \to \mathbb{C}$ by
+		\begin{equation}
+			F(z) := \frac{1}{1 + z^4}.	
+		\end{equation}
+		Clearly $F \in \mathcal{O}(U)$ as a well-defined rational function, $U$ is open in $\mathbb{C}$ and $\mathbb{R} \subseteq U$. Furthermore $F\vert_\mathbb{R} = f$. Hence $F$ is a holomorphic continuation of $f$. Since havin an analytic continuation is equivalent to be real-analytic (see \cite[100]{fischer2003funktionentheorie}), we have that $f$ is real-analytic.\\
+		Let $x_0 \in \mathbb{R}$. The Taylor series expansion of $f$ is completely determined by the one of $F$. So the only thing which restricts the radius of convergence of the Taylor series expansions are the singularities of $F$. I will again formalize why this is the case. Let 
+		\begin{equation}
+			F(z) = \sum_{\nu = 0}^\infty a_\nu(z - x_0)^\nu
+			\label{eq:expansion}
+		\end{equation}
+		\noindent be the Taylor expansion of $F$ around $x_0$. By Cauchy-Taylor the radius of convergence of the expansion (\ref{eq:expansion}) is at least $\abs[0]{x_0 - e^{i\pi/2}}$ if $x_0 \geq 0$ and $\abs[0]{x_0 + e^{i\pi/4}}$ if $x_0 \leq 0$. Let $r:= \abs[0]{x_0 - e^{i\pi/4}}$ and assume $x_0 \geq 0$. (the case $x_0 \leq 0$ is similar) and $R > r$. Hence the series in (\ref{eq:expansion}) converges in $B_R(x_0)$. Hence it defines a function $G: B_R(x_0) \to \mathbb{C}$ by
+		\begin{equation}
+			G(z) := \sum_{\nu = 0}^\infty a_\nu(z - x_0)^\nu 
+		\end{equation}
+		\noindent with $G\vert_{B_r}(x_0) = F$. Since $G$ is expandable in a power series, we have $G \in \mathcal{O}(B_R(x_0))$ by \cite[187]{remmert2002funktionentheorie}. Since any holomorphic functionis continuous, we have $G \in \mathscr{C}(B_R(x_0))$. Let $(z_\nu)_{\nu \in \mathbb{N}}$ be a sequence in $B_r(x_0)$ such that $\lim_{\nu \to \infty} z_\nu = e^{i\pi/4}$. Clearly
+		\begin{equation}
+			\lim_{\nu \to \infty}F(z_\nu) = \infty
+		\end{equation}
+		\noindent and since $G\vert_{B_r(x_0)} = F$ we have
+		\begin{equation}
+			\lim_{\nu \to \infty} G(z_\nu) = \infty.	
+		\end{equation}
+		\noindent But since $R > r$, $G$ is continuous at $e^{i\pi/4}$ and so we must have
+		\begin{equation}
+			G(e^{i\pi/4}) = \lim_{\nu \to \infty}G(z_\nu) = \infty.
+		\end{equation}
+		Thus the series $G$ diverges at $e^{i\pi/4}$, contradicting that $e^{i\pi/4} \in B_R(x_0)$. Now for general $x_0 \in \mathbb{R}$, the radius of convergence $R$ of the Taylor series expansion of $f$ in $x_0$ is the radius of convergence of the restriction of the Taylor series expansion of $F$ in $x_0$ on $\mathbb{R}$, hence
+		\begin{align*}
+			R = \begin{cases}
+				\abs[0]{x_0 - e^{i\pi/4}} & x_0 \geq 0,\\
+				\abs[0]{x_0 + e^{i\pi/4}} & x_0 \leq 0.
+			\end{cases}
+		\end{align*}
+
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
