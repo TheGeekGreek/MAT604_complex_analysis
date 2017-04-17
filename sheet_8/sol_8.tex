@@ -13,7 +13,7 @@
 		\begin{equation}
 			F(z) := \frac{1}{1 + z^4}.	
 		\end{equation}
-		Clearly $F \in \mathcal{O}(U)$ as a well-defined rational function, $U$ is open in $\mathbb{C}$ and $\mathbb{R} \subseteq U$. Furthermore $F\vert_\mathbb{R} = f$. Hence $F$ is a holomorphic continuation of $f$. Since havin an analytic continuation is equivalent to be real-analytic (see \cite[100]{fischer2003funktionentheorie}), we have that $f$ is real-analytic.\\
+		Clearly $F \in \mathcal{O}(U)$ as a well-defined rational function, $U$ is open in $\mathbb{C}$ and $\mathbb{R} \subseteq U$. Furthermore $F\vert_\mathbb{R} = f$. Hence $F$ is a holomorphic continuation of $f$. Since having an analytic continuation is equivalent to be real-analytic (see \cite[100]{fischer2003funktionentheorie}), we have that $f$ is real-analytic.\\
 		Let $x_0 \in \mathbb{R}$. The Taylor series expansion of $f$ is completely determined by the one of $F$. So the only thing which restricts the radius of convergence of the Taylor series expansions are the singularities of $F$. I will again formalize why this is the case. Let 
 		\begin{equation}
 			F(z) = \sum_{\nu = 0}^\infty a_\nu(z - x_0)^\nu
@@ -43,6 +43,47 @@
 			\end{cases}
 		\end{align*}
 
+	\item
+		~
+		\begin{enumerate}[label = (\roman*),wide = 0pt, itemsep=1.5ex]
+			\item Since $f \in \mathcal{O}(\mathbb{E})$ we have that $f \in \mathscr{C}(\mathbb{E})$. Thus since $\partial B_r(0)$, $0 \leq r < 1$, is compact we have that $\abs{f}$ attains its supremum on $\partial B_r(0)$. Hence we have 
+				\begin{equation}
+					M(r) = \max_{\abs[0]{z} = r} \abs[0]{f(z)}.
+				\end{equation}
+				First we show monotonicity. Let $0 \leq r_1 < r_2 < 1$. We have $\overline{B_{r_2}}(0) \subseteq \mathbb{E}$. Thus $f$ is holomorphic in the bounded domain $B_{r_2}(0)$ and continuous on $\overline{B_{r_2}}(0)$. Then the maximum principle implies that 
+				\begin{equation}
+					\abs[0]{f(z)} \leq \max_{\zeta \in \partial B_{r_2}(0)}\abs[0]{f(\zeta)} = M(r_2)
+				\end{equation}
+				\noindent for all $z \in \overline{B_{r_2}}(0)$. In particular 
+				\begin{equation}
+					M(r_1) = \max_{\zeta \in \partial B_{r_1}(0)}\abs[0]{f(\zeta)} \leq \max_{\zeta \in \partial B_{r_2}(0)}\abs[0]{f(\zeta)} = M(r_2).
+				\end{equation}
+				Thus $M$ is monotonically increasing.
+			\item Proof by contradiction. Assume that $f$ is not constant and that $M$ is not strictly increasing. Hence we find $0 \leq r_1 < r_2 < 1$ such that $M(r_1) = M(r_2)$ since by part (i) we already know that $M$ is monotone increasing. Thus we find $z_0 \in B_{r_1}(0)$ such that $M(r_1) = \abs[0]{f(z_0)}$. An application of the maximum principle similar to part (i) yields
+				\begin{equation}
+					\abs[0]{f(z)} \leq \max_{\zeta \in \partial B_{r_2}(0)}	\abs[0]{f(\zeta)} = M(r_2) = M(r_1) = \abs[0]{f(z_0)}
+				\end{equation}
+				\noindent for all $z \in \overline{B_{r_2}}(0)$. But $z_0 \in B_{r_1}(0)$ and $r_1 < r_2$, thus $B_{r_2 - r_1}(z_0) \neq \cbr[0]{z_0}$. Hence $\abs[0]{f}$ has a local maximum in $B_{r_2}(0)$ and thus by the maximum principle, $f$ is constant in $B_{r_2}(0)$. Since $0 < r_2$, $B_{r_2}(0)$ is not discrete in $\mathbb{E}$, hence if we define $g: \mathbb{E} \to \mathbb{C}$ by $g(z) := f(z_0)$, clearly $g \in \mathcal{O}(\mathbb{R})$ and $f = g$ on $B_{r_2}(0)$. Hence by the second version of the identity principle we have $f = g$ on $\mathbb{E}$ which implies that $f$ is constant on $\mathbb{E}$. Contradiction. 
+		\end{enumerate}
+
+	\item
+	\item Central is Weierstrass' differentiation theorem for compact convergent series. For each $\nu \in \mathbb{N}_0$ let
+		\begin{equation}
+			f_\nu(z) := \sum_{\mu = 0}^\infty c_{\nu \mu}(z - z_0)^\mu
+		\end{equation}
+		\noindent be convergent in $B_r(z_0)$, $r > 0$, $z_0 \in \mathbb{C}$. Furthermore, assume that
+		\begin{equation}
+			f(z) := \sum_{\nu = 0}^\infty f_\nu(z) = \sum_{\nu = 0}^\infty \sum_{\mu = 0}^\infty c_{\nu \mu}(z - z_0)^\mu
+		\end{equation}
+		\noindent is normally convergent in $B_r(z_0)$. Since $r > 0$, the theorem on interchangeability of differentiation and summation of power series implies that $f_\nu \in \mathcal{O}(B_r(z_0))$ for all $\nu \in \mathbb{N}_0$. Since $\sum_{\nu = 0}^\infty f_\nu$ is normally convergent in $B_r(z_0)$, we have that $\sum_{\nu = 0}^\infty f_\nu$ is locally uniformly convergent in $B_r(z_0)$ and thus compactly convergent in $B_r(z_0)$. Hence Weierstrass' theorem implies that the limit function $f$ is holomorphic in $B_r(z_0)$. Thus by the expansion theorem of Cauchy-Taylor, for any $z \in B_r(z_0)$ we find a disc centered at $z$ where $f$ is expandable in a Taylor seriers. This implies that $f$ is analytic in $B_r(z_0)$. Furthermore, the same theorem implies that for any $k \in \mathbb{N}_0$ we have
+		\begin{equation}
+			f^{(k)}(z) = \sum_{\nu = 0}^\infty f_\nu^{(k)}(z) = \sum_{\nu = 0}^\infty \sum_{\mu = k}^\infty k! {\mu \choose k}c_{\nu \mu}(z - z_0)^{\mu - k} 
+		\end{equation}
+		\noindent for all $z \in B_r(z_0)$ by the theorem on interchangeability of differentiation and summation of power series. Since $f \in \mathcal{O}(B_r(z_0))$, the expansion theorem of Cauchy-Taylor implies that 
+		\begin{equation}
+			f(z) = \sum_{k = 0}^\infty \frac{f^{(k)}(z_0)}{k !} (z - z_0)^k = \sum_{k = 0}^\infty \del[4]{\sum_{\nu = 0}^\infty c_{\nu k}} (z - z_0)^k
+		\end{equation}
+		\noindent for all $z \in B_r(z_0)$.
 \end{enumerate}
 %\originalsectionstyle
 \printbibliography
