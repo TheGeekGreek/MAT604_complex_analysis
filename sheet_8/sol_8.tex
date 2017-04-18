@@ -9,21 +9,21 @@
 \maketitle
 \thispagestyle{fancy}
 \begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
-	\item We follow \cite[99--101]{fischer2003funktionentheorie}. Let $U := \mathbb{C} \setminus \cbr[0]{\pm e^{\pm i\pi/4}}$ and define $F: U \to \mathbb{C}$ by
+	\item Let $U := \mathbb{C} \setminus \cbr[0]{\pm e^{\pm i\pi/4}}$ and define $F: U \to \mathbb{C}$ by
 		\begin{equation}
 			F(z) := \frac{1}{1 + z^4}.	
 		\end{equation}
-		Clearly $F \in \mathcal{O}(U)$ as a well-defined rational function, $U$ is open in $\mathbb{C}$ and $\mathbb{R} \subseteq U$. Furthermore $F\vert_\mathbb{R} = f$. Hence $F$ is a holomorphic continuation of $f$. Since having an analytic continuation is equivalent to be real-analytic (see \cite[100]{fischer2003funktionentheorie}), we have that $f$ is real-analytic.\\
-		Let $x_0 \in \mathbb{R}$. The Taylor series expansion of $f$ is completely determined by the one of $F$. So the only thing which restricts the radius of convergence of the Taylor series expansions are the singularities of $F$. I will again formalize why this is the case. Let 
+		Clearly $F \in \mathcal{O}(U)$ as a well defined rational function, $U$ is open in $\mathbb{C}$ and $\mathbb{R} \subseteq U$. Furthermore $F\vert_\mathbb{R} = f$. Hence $F$ is a holomorphic continuation of $f$. Since having an analytic continuation is equivalent to be real-analytic (see \cite[100]{fischer2003funktionentheorie}), we have that $f$ is real-analytic.\\
+		Let $x_0 \in \mathbb{R}$. The Taylor series expansion of $f$ is completely determined by the one of $F$. This is due to the fact, that $F^{(\nu)}(x_0) = f^{(\nu)}(x_0)$ for all $\nu \in \mathbb{N}_0$. By Cauchy-Taylor, $F$ is expandable into a power series in the largest ball around $x_0$ contained in $U$, i.e. 
 		\begin{equation}
 			F(z) = \sum_{\nu = 0}^\infty a_\nu(z - x_0)^\nu
 			\label{eq:expansion}
 		\end{equation}
-		\noindent be the Taylor expansion of $F$ around $x_0$. By Cauchy-Taylor the radius of convergence of the expansion (\ref{eq:expansion}) is at least $\abs[0]{x_0 - e^{i\pi/2}}$ if $x_0 \geq 0$ and $\abs[0]{x_0 + e^{i\pi/4}}$ if $x_0 \leq 0$. Let $r:= \abs[0]{x_0 - e^{i\pi/4}}$ and assume $x_0 \geq 0$. (the case $x_0 \leq 0$ is similar) and $R > r$. Hence the series in (\ref{eq:expansion}) converges in $B_R(x_0)$. Hence it defines a function $G: B_R(x_0) \to \mathbb{C}$ by
+		\noindent and the convergence is normal there. Thus the radius of convergence $R$ of the expansion (\ref{eq:expansion}) is at least $\abs[0]{x_0 - e^{i\pi/4}}$ if $x_0 \geq 0$ and $\abs[0]{x_0 + e^{i\pi/4}}$ if $x_0 \leq 0$. Let $r:= \abs[0]{x_0 - e^{i\pi/4}}$ and assume $x_0 \geq 0$ (the case $x_0 \leq 0$ is similar). Furthermore assume that $R > r$. Hence the series expansion (\ref{eq:expansion}) converges in $B_R(x_0)$ and therefore defines a function $G: B_R(x_0) \to \mathbb{C}$ by
 		\begin{equation}
 			G(z) := \sum_{\nu = 0}^\infty a_\nu(z - x_0)^\nu 
 		\end{equation}
-		\noindent with $G\vert_{B_r}(x_0) = F$. Since $G$ is expandable in a power series, we have $G \in \mathcal{O}(B_R(x_0))$ by \cite[187]{remmert2002funktionentheorie}. Since any holomorphic functionis continuous, we have $G \in \mathscr{C}(B_R(x_0))$. Let $(z_\nu)_{\nu \in \mathbb{N}}$ be a sequence in $B_r(x_0)$ such that $\lim_{\nu \to \infty} z_\nu = e^{i\pi/4}$. Clearly
+		\noindent with $G\vert_{B_r}(x_0) = F$. Since $G$ is expandable in a power series, we have $G \in \mathcal{O}(B_R(x_0))$ by \cite[187]{remmert2002funktionentheorie}. Since any holomorphic function is continuous, we have $G \in \mathscr{C}(B_R(x_0))$. Let $(z_\nu)_{\nu \in \mathbb{N}}$ be a sequence in $B_r(x_0)$ such that $\lim_{\nu \to \infty} z_\nu = e^{i\pi/4}$. Clearly
 		\begin{equation}
 			\lim_{\nu \to \infty}F(z_\nu) = \infty
 		\end{equation}
@@ -35,13 +35,10 @@
 		\begin{equation}
 			G(e^{i\pi/4}) = \lim_{\nu \to \infty}G(z_\nu) = \infty.
 		\end{equation}
-		Thus the series $G$ diverges at $e^{i\pi/4}$, contradicting that $e^{i\pi/4} \in B_R(x_0)$. Now for general $x_0 \in \mathbb{R}$, the radius of convergence $R$ of the Taylor series expansion of $f$ in $x_0$ is the radius of convergence of the restriction of the Taylor series expansion of $F$ in $x_0$ on $\mathbb{R}$, hence
-		\begin{align*}
-			R = \begin{cases}
-				\abs[0]{x_0 - e^{i\pi/4}} & x_0 \geq 0,\\
-				\abs[0]{x_0 + e^{i\pi/4}} & x_0 \leq 0.
-			\end{cases}
-		\end{align*}
+		Thus the series $G$ diverges at $e^{i\pi/4}$, contradicting that $e^{i\pi/4} \in B_R(x_0)$. In conclusion 
+		\begin{equation}
+			\boxed{R(x_0) = \min\del[0]{\abs[0]{x_0 - e^{i\pi/4}},\abs[0]{x_0 + e^{i\pi/4}}} \qquad x_0 \in \mathbb{R}.}
+		\end{equation}
 
 	\item
 		Since $f \in \mathcal{O}(\mathbb{E})$ we have that $f \in \mathscr{C}(\mathbb{E})$. Thus since $\partial B_r(0)$, $0 \leq r < 1$, is compact we have that $\abs{f}$ attains its supremum on $\partial B_r(0)$. Hence we have 
@@ -49,7 +46,7 @@
 					M(r) = \max_{\abs[0]{z} = r} \abs[0]{f(z)}.
 				\end{equation}
 		\begin{enumerate}[label = (\roman*),wide = 0pt, itemsep=1.5ex]
-			\item Let $0 < R < 1$. Since $\overline{B_R}(0)$ is compact and $f \in \mathscr{C}(\mathbb{E})$, we have that $f$ is uniformly continuous on $\overline{B_R}(0)$. By the reversed triangle inequality also $\abs[0]{f}$ is uniformly continuous on $\overline{B_R}(0)$. Let $r_1,r_2 \in \intcc{0,R}$ and $\varepsilon > 0$. Assume first that $M(r_2) \geq M(r_1)$. Since $\abs[0]{f}$ attains its maximum on a compactum, we find $\varphi \in \mathbb{R}$ such that
+			\item Let $0 < R < 1$. Since $\overline{B_R}(0)$ is compact and $f \in \mathscr{C}(\mathbb{E})$, we have that $f$ is uniformly continuous on $\overline{B_R}(0)$ (see for example \cite[138]{alt2016linear}). By the reversed triangle inequality also $\abs[0]{f}$ is uniformly continuous on $\overline{B_R}(0)$. Let $r_1,r_2 \in \intcc{0,R}$ and $\varepsilon > 0$. Assume first that $M(r_2) \geq M(r_1)$. We find $\varphi \in \mathbb{R}$ such that
 				\begin{equation}
 					M(r_2) = \abs[0]{f(r_2 e^{i\varphi})}.
 				\end{equation}
@@ -65,7 +62,7 @@
 				\begin{equation}
 					\abs[0]{M(r_1) - M(r_2)} < \varepsilon
 				\end{equation}
-				\noindent whenever $\abs[0]{r_1 - r_2} < \delta$. Hence $M$ is uniformly continuous on $\intcc{0,R}$. Now $M$ is clearly continuous on $\intco{0,1}$, since if not, there would exist a point $r_0 \in \intco{0,1}$ where $M$ is not continuous, but $r_0 \leq R < 1$ for some suitable choice of $R$, and since uniform continuity implies continuity, $M$ would be continuous at $r_0$. Thus we conclude $M \in \mathscr{C}(\intco{0,1})$.\\
+				\noindent whenever $\abs[0]{r_1 - r_2} < \delta$. Hence $M$ is uniformly continuous on $\intcc{0,R}$. Now $M$ is clearly continuous on $\intco{0,1}$, since if not, there would exist a point $r_0 \in \intco{0,1}$ where $M$ is not continuous, but $r_0 < R < 1$ for some suitable choice of $R$, and since uniform continuity implies continuity, $M$ would be continuous at $r_0$. Thus we conclude $M \in \mathscr{C}(\intco{0,1})$.\\
 	Next we show monotonicity. Let $0 \leq r_1 < r_2 < 1$. We have $\overline{B_{r_2}}(0) \subseteq \mathbb{E}$. Thus $f$ is holomorphic in the bounded domain $B_{r_2}(0)$ and continuous on $\overline{B_{r_2}}(0)$. Then the maximum principle implies that 
 				\begin{equation}
 					\abs[0]{f(z)} \leq \max_{\zeta \in \partial B_{r_2}(0)}\abs[0]{f(\zeta)} = M(r_2)
@@ -94,7 +91,7 @@
 		\begin{equation}
 			\partial B_{\hat{R}}(z_0) \subseteq \bigcup_{k = 1}^n B_{r_{\zeta_k}}(\zeta_k).
 		\end{equation}
-		Next we construct a function $g: B_{\hat{R}}(z_0) \to \mathbb{C}$. Define $g(z) := \sum_{\nu = 0}^\infty a_\nu (z - z_0)^\nu$ if $z \in B_R(z_0)$. If $z \in \del[0]{B_{r_{\zeta_\nu}}(\zeta_\nu) \cap B_{r_{\zeta_\mu}}(\zeta_\mu)} \setminus B_R(z_0)$, we have that $f_{\zeta_\nu} = f_{\zeta_\mu}$ in $B_{r_{\zeta_\nu}}(\zeta_\nu) \cap B_{r_{\zeta_\mu}}(\zeta_\mu) \cap B_R(z_0)$, which is open and therefore not discrete in $B_{r_{\zeta_\nu}}(\zeta_\nu) \cap B_{r_{\zeta_\mu}}(\zeta_\mu)$. Thus by the second version of the identity principle we have $f_{\zeta_\nu} = f_{\zeta_{\mu}}$ on $B_{r_{\zeta_\nu}}(\zeta_\nu) \cap B_{r_{\zeta_\mu}}(\zeta_\mu)$. Therefore $g(z) := f_{\zeta_{\nu}}(z) = f_{\zeta_\mu}(z)$ is well defined. In the remaining cases, define $g(z) := f_{\zeta_\nu}(z)$ if $z \in B_{r_{\zeta_\nu}}(\zeta_\nu)$. Since $f_{\zeta_\nu} \in \mathcal{O}(\zeta_\nu)$ and by the theorem on interchangeability of differentiation and summation we have that any power series is holomorphic within its radius of convergence, we have that $g \in \mathcal{O}(B_{\hat{R}}(z_0))$. An application of Cauchy-Taylor yields
+		Next we construct a function $g: B_{\hat{R}}(z_0) \to \mathbb{C}$. Define $g(z) := \sum_{\nu = 0}^\infty a_\nu (z - z_0)^\nu$ if $z \in B_R(z_0)$. If $z \in \del[0]{B_{r_{\zeta_\nu}}(\zeta_\nu) \cap B_{r_{\zeta_\mu}}(\zeta_\mu)} \setminus B_R(z_0)$, we have that $f_{\zeta_\nu} = f_{\zeta_\mu}$ in $B_{r_{\zeta_\nu}}(\zeta_\nu) \cap B_{r_{\zeta_\mu}}(\zeta_\mu) \cap B_R(z_0)$, which is open and therefore not discrete in $B_{r_{\zeta_\nu}}(\zeta_\nu) \cap B_{r_{\zeta_\mu}}(\zeta_\mu)$. Thus by the second version of the identity principle we have $f_{\zeta_\nu} = f_{\zeta_{\mu}}$ on $B_{r_{\zeta_\nu}}(\zeta_\nu) \cap B_{r_{\zeta_\mu}}(\zeta_\mu)$. Therefore $g(z) := f_{\zeta_{\nu}}(z) = f_{\zeta_\mu}(z)$ is well defined. In the remaining cases, define $g(z) := f_{\zeta_\nu}(z)$ if $z \in B_{r_{\zeta_\nu}}(\zeta_\nu)$. Since $f_{\zeta_\nu} \in \mathcal{O}(U_{\zeta_\nu})$ and by the theorem on interchangeability of differentiation and summation we have that any power series is holomorphic within its radius of convergence, we have that $g \in \mathcal{O}(B_{\hat{R}}(z_0))$. An application of Cauchy-Taylor yields
 		\begin{equation}
 			g(z) = \sum_{\nu = 0}^\infty \frac{g^{(\nu)}(z_0)}{\nu !}(z - z_0)^\nu = \sum_{\nu = 0}^\infty \frac{f^{(\nu)}(z_0)}{\nu !}(z - z_0)^\nu
 		\end{equation}
