@@ -43,27 +43,40 @@
 	\item
 		Since $f \in \mathcal{O}(\mathbb{E})$ we have that $f \in \mathscr{C}(\mathbb{E})$. Thus since $\partial B_r(0)$, $0 \leq r < 1$, is compact we have that $\abs{f}$ attains its supremum on $\partial B_r(0)$. Hence we have 
 				\begin{equation}
-					M(r) = \max_{\abs[0]{z} = r} \abs[0]{f(z)}.
+					M(r) = \max_{\abs[0]{z} = r} \abs[0]{f(z)}
 				\end{equation}
+				\noindent and actually $M: \intco{0,1} \to \mathbb{R}_{\geq 0}$.
 		\begin{enumerate}[label = (\roman*),wide = 0pt, itemsep=1.5ex]
-			\item Let $0 < R < 1$. Since $\overline{B_R}(0)$ is compact and $f \in \mathscr{C}(\mathbb{E})$, we have that $f$ is uniformly continuous on $\overline{B_R}(0)$ (see for example \cite[138]{alt2016linear}). By the reversed triangle inequality also $\abs[0]{f}$ is uniformly continuous on $\overline{B_R}(0)$. Let $r_1,r_2 \in \intcc{0,R}$ and $\varepsilon > 0$. Assume first that $M(r_2) \geq M(r_1)$. We find $\varphi \in \mathbb{R}$ such that
+			\item Let $0 < R < 1$. Since $\overline{B_R}(0)$ is compact and $f \in \mathscr{C}(\mathbb{E})$, we have that $f$ is uniformly continuous on $\overline{B_R}(0)$ (see for example \cite[138]{alt2016linear} or \cite[215]{lee:topological_manifolds:2011}). By the reversed triangle inequality, also $\abs[0]{f}$ is uniformly continuous on $\overline{B_R}(0)$. 
+				\begin{proposition}
+					$M$ is uniformly continuous on $\intcc{0,R}$, $0 < R < 1$.
+					\label{prop:M_uniform}
+				\end{proposition}
+
+				\begin{proof}
+					Fix $0 < R < 1$ and let $\varepsilon > 0$. Since $\abs[0]{f}$ is uniformly continuous on $\overline{B_R}(0)$, we find $\delta > 0$ such that for all $z_1,z_2 \in \overline{B_R}(0)$, $\abs[0]{z_1 - z_2} < \delta$ implies $\abs[0]{\abs[0]{f(z_1)} - \abs[0]{f(z_2)}} < \varepsilon$. Let $r_1,r_2 \in \intcc{0,R}$. There are two cases to distinguish. First assume $M(r_1) \geq M(r_2)$. We find $\varphi_1 \in \mathbb{R}$ such that $M(r_1) = \abs[0]{f(r_1e^{i\varphi_1})}$. If $\abs[0]{r_1 - r_2} = \abs[0]{r_1e^{i\varphi_1} - r_2e^{i\varphi_1}} < \delta$, we have that
 				\begin{equation}
-					M(r_2) = \abs[0]{f(r_2 e^{i\varphi})}.
+					M(r_1) - M(r_2) \leq M(r_1) - \abs[0]{f(r_2e^{i\varphi_1})} = \abs[0]{f(r_1e^{i\varphi_1})} - \abs[0]{f(r_2e^{i\varphi_1})} < \varepsilon
 				\end{equation}
-				Now
+				\noindent since $r_1e^{i\varphi_1},r_2e^{i\varphi_1} \in \overline{B_R}(0)$. Now assume $M(r_1) \leq M(r_2)$. Again, we find $\varphi_2 \in \mathbb{R}$ such that $M(r_2) = \abs[0]{f(r_2 e^{i\varphi_2})}$ and analogously if $\abs[0]{r_1 - r_2} = \abs[0]{r_1e^{i\varphi_2} - r_2e^{i\varphi_2}} < \delta$, we have that
 				\begin{align*}
-					M(r_2) - M(r_1) \leq M(r_2) - \abs[0]{f(r_1e^{i\varphi})} = \abs[0]{f(r_2e^{i\varphi})} - \abs[0]{f(r_1e^{i\varphi})} < \varepsilon
+					M(r_2) - M(r_1) \leq M(r_2) - \abs[0]{f(r_1e^{i\varphi_2})} = \abs[0]{f(r_2e^{i\varphi_2})} - \abs[0]{f(r_1e^{i\varphi_2})} < \varepsilon
 				\end{align*}
-				\noindent whenever $\abs[0]{r_2 - r_1} = \abs[0]{r_2e^{i\varphi} - r_1e^{i\varphi}} < \delta$ by the uniform continuity of $\abs[0]{f}$ on $\intcc{0,R}$. Now assume $M(r_2) \leq M(r_1)$. Again we find $\psi \in \mathbb{R}$ such that $M(r_1) = \abs[0]{f(r_1e^{i\psi})}$. Thus
-				\begin{equation}
-					M(r_1) - M(r_2) \leq M(r_1) - \abs[0]{f(r_2e^{i\psi})} = \abs[0]{f(r_1e^{i\psi})} - \abs[0]{f(r_2e^{i\psi})} < \varepsilon
-				\end{equation}
-				\noindent whenever $\abs[0]{r_2 - r_1} < \delta$. Thus we have
-				\begin{equation}
-					\abs[0]{M(r_1) - M(r_2)} < \varepsilon
-				\end{equation}
-				\noindent whenever $\abs[0]{r_1 - r_2} < \delta$. Hence $M$ is uniformly continuous on $\intcc{0,R}$. Now $M$ is clearly continuous on $\intco{0,1}$, since if not, there would exist a point $r_0 \in \intco{0,1}$ where $M$ is not continuous, but $r_0 < R < 1$ for some suitable choice of $R$, and since uniform continuity implies continuity, $M$ would be continuous at $r_0$. Thus we conclude $M \in \mathscr{C}(\intco{0,1})$.\\
-	Next we show monotonicity. Let $0 \leq r_1 < r_2 < 1$. We have $\overline{B_{r_2}}(0) \subseteq \mathbb{E}$. Thus $f$ is holomorphic in the bounded domain $B_{r_2}(0)$ and continuous on $\overline{B_{r_2}}(0)$. Then the maximum principle implies that 
+				\noindent since $r_1e^{i\varphi_2},r_2e^{i\varphi_2} \in \overline{B_R}(0)$. In conclusion $\abs[0]{M(r_1) - M(r_2)} < \varepsilon$ whenever $\abs[0]{r_1 - r_2} < \delta$. Hence $M$ is uniformly continuous on $\intcc{0,R}$.
+				\end{proof}
+
+				\begin{corollary}
+					$M \in \mathscr{C}(\intco{0,1})$.
+				\end{corollary}
+				\begin{proof}
+					By proposition \ref{prop:M_uniform}, $M \in \mathscr{C}(\intcc{0,R})$ for any $0 < R < 1$ since uniform continuity implies continuity. Let $r_0 \in \intco{0,1}$. We find $0 \leq r_0 < R < 1$ and since continuity is a local property, we have that $M$ is continuous at $r_0$. Since the choice of $r_0$ was arbitray, we conclude that $M \in \mathscr{C}(\intco{0,1})$.
+				\end{proof}
+ 
+				\begin{lemma}
+					$M$ is nondecreasing.
+				\end{lemma}
+				\begin{proof}
+					Let $0 \leq r_1 < r_2 < 1$. We have $\overline{B_{r_2}}(0) \subseteq \mathbb{E}$. Thus $f$ is holomorphic in the bounded domain $B_{r_2}(0)$ and continuous on $\overline{B_{r_2}}(0)$. The maximum modulus principle \cite[91]{fischer2003funktionentheorie} implies 
 				\begin{equation}
 					\abs[0]{f(z)} \leq \max_{\zeta \in \partial B_{r_2}(0)}\abs[0]{f(\zeta)} = M(r_2)
 				\end{equation}
@@ -71,12 +84,15 @@
 				\begin{equation}
 					M(r_1) = \max_{\zeta \in \partial B_{r_1}(0)}\abs[0]{f(\zeta)} \leq \max_{\zeta \in \partial B_{r_2}(0)}\abs[0]{f(\zeta)} = M(r_2).
 				\end{equation}
-				Thus $M$ is monotonically increasing.
-			\item Proof by contradiction. Assume that $f$ is not constant and that $M$ is not strictly increasing. Hence we find $0 \leq r_1 < r_2 < 1$ such that $M(r_1) = M(r_2)$ since by part (i) we already know that $M$ is monotone increasing. Thus we find $z_0 \in B_{r_1}(0)$ such that $M(r_1) = \abs[0]{f(z_0)}$. An application of the maximum principle similar to part (i) yields
+				Thus $M$ is nondecreasing.
+				\end{proof}
+
+			\item Proof by contradiction. Assume that $f$ is not constant and that $M$ is not increasing. Hence we find $0 \leq r_1 < r_2 < 1$ such that $M(r_1) = M(r_2)$, since by part (i) we already know that $M$ is nondecreasing. We find $z_0 \in \partial B_{r_1}(0)$ such that $M(r_1) = \abs[0]{f(z_0)}$. An application of the maximum principle similar to part (i) yields
 				\begin{equation}
 					\abs[0]{f(z)} \leq \max_{\zeta \in \partial B_{r_2}(0)}	\abs[0]{f(\zeta)} = M(r_2) = M(r_1) = \abs[0]{f(z_0)}
+					\label{eq:max}
 				\end{equation}
-				\noindent for all $z \in \overline{B_{r_2}}(0)$. But $z_0 \in B_{r_1}(0)$ and $r_1 < r_2$, thus $B_{r_2 - r_1}(z_0) \neq \cbr[0]{z_0}$. Hence $\abs[0]{f}$ has a local maximum in $B_{r_2}(0)$ and thus by the maximum principle, $f$ is constant in $B_{r_2}(0)$. Since $0 < r_2$, $B_{r_2}(0)$ is not discrete in $\mathbb{E}$, hence if we define $g: \mathbb{E} \to \mathbb{C}$ by $g(z) := f(z_0)$, clearly $g \in \mathcal{O}(\mathbb{R})$ and $f = g$ on $B_{r_2}(0)$. Hence by the second version of the identity principle we have $f = g$ on $\mathbb{E}$ which implies that $f$ is constant on $\mathbb{E}$. Contradiction. 
+				\noindent for all $z \in \overline{B_{r_2}}(0)$. Define $r := \min(r_1,r_2 - r_1)$. Since $B_r(z_0) \neq \cbr[0]{z_0}$, $B_r(z_0) \subseteq B_{r_2}(0)$ and by (\ref{eq:max}) we have that $\abs[0]{f(z)} \leq \abs[0]{f(z_0)}$ for all $z \in B_r(0)$, $\abs[0]{f}$ has a local maximum at $z_0 \in B_{r_2}(0)$. Thus by the maximum modulus principle, $f$ is constant in $B_{r_2}(0)$. Since $0 < r_2$, $B_{r_2}(0)$ is not discrete in $\mathbb{E}$, hence if we define $g: \mathbb{E} \to \mathbb{C}$ by $g(z) := f(z_0)$, clearly $g \in \mathcal{O}(\mathbb{E})$ and $f = g$ on $B_{r_2}(0)$. Hence by the second version of the identity principle \cite[85]{fischer2003funktionentheorie} we have $f = g$ on $\mathbb{E}$ which implies that $f$ is constant on $\mathbb{E}$. Contradiction. 
 		\end{enumerate}
 
 	\item Proof by contradiction. Since no point $\zeta \in \partial B_R(z_0)$ is singular, we find a neighbourhood $U_\zeta$ of $\zeta$ and a function $f_\zeta \in \mathcal{O}(U_\zeta)$, such that 
