@@ -1,0 +1,74 @@
+\input{header.tex}
+
+\title{Solutions Sheet 9}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+\begin{enumerate}[label = \textbf{Exercise \arabic*.},wide = 0pt, itemsep=1.5ex]
+	\item Let $\Gamma := \sbr[0]{z_1,z_2} + \sbr[0]{z_2,z_3} + \sbr[0]{z_3,z_1}$. $\Gamma$ is a cycle since it is the positively oriented boundary chain of the non-empty domain $\Delta^\circ$ (example $1$ in Fischer/Lieb). Now by Satz $1.3$ we have that $n(\Gamma,z)$ is locally constant for $z \in \mathbb{C} \setminus \abs[0]{\Gamma}$ and $0$ for $z$ in the unbounded pathcomponent. Thus we get 
+	\begin{equation*}
+		n(\Gamma,z) = 0 \qquad z \in \mathbb{C} \setminus \Delta.
+	\end{equation*}
+	By the wall-crossing lemma (Satz $3.1$) we get furthermore 
+	\begin{equation*}
+		n(\Gamma,z) = 1 \qquad z \in \Delta^\circ
+	\end{equation*}
+	\noindent since by assumption every line segment is not a singleton, hence we find a ball around a point in the line segment and we can apply Satz $3.1$ which just yields
+	\begin{equation*}
+		n(\Gamma,z_1) = n(\Gamma,z_2) + 1 = 1 \qquad z_1 \in \Delta^\circ, z_2 \in \mathbb{C} \setminus \Delta.
+	\end{equation*}
+ 	\item See separate sheet.
+	\item
+	~
+	\begin{enumerate}[label = (\roman{*}),wide = 0pt, itemsep=1.5ex]
+		\item Let $f \in \mathcal{O}(G_1 \cup G_2)$ (clearly $G_1 \cup G_2$ is open and connected since it is path-connected by the non-empty intersection). This implies $f \in \mathcal{O}(G_1)$ and $f \in \mathcal{O}(G_2)$. Since $G_1$ and $G_2$ are elementary domains, there exist primitives $F_1: G_1 \to \mathbb{C}$ and $F_2: G_2 \to \mathbb{C}$ of $f$. Consider the auxiliary function $\varphi: G_1 \cap G_2 \to \mathbb{C}$ defined by $\varphi(z) := F_1(z) - F_2(z)$. This is clearly not the empty function since $G_1 \cap G_2 \neq \varnothing$ by assumption. Now
+		\begin{equation*}
+			\varphi'(z) = F_1'(z) - F_2'(z) = f(z) - f(z) = 0
+		\end{equation*}
+		\noindent for all $z \in G_1 \cap G_2$ implies that $\varphi$ is locally constant on $G_1 \cap G_2$ and thus by connectedness, $\varphi$ is constant on $G_1 \cap G_2$. Hence there exists $\lambda \in \mathbb{C}$ such that $F_1(z) = F_2(z) + \lambda$ for all $z \in G_1 \cap G_2$. Thus
+		\begin{align*}
+			F(z) := \begin{cases}
+						F_1(z) & z \in G_1\\
+						F_2(z) + \lambda & z \in G_2
+					\end{cases}
+		\end{align*}
+		\noindent is a well defined primitive of $f$ in $G_1 \cup G_2$.
+		\item Consider $G_1 := \mathbb{C} \setminus \mathbb{R}_{\leq 0}$ and $G_2 := \mathbb{C} \setminus \mathbb{R}_{\geq 0}$. Clearly, $G_1$ and $G_2$ are elementary domains, since they are star-shaped domains. Now $G_1 \cap G_2 = \mathbb{C} \setminus \mathbb{R} \neq \varnothing$ which is not connected since 
+		\begin{equation*}
+			\mathbb{C} \setminus \mathbb{R} = \cbr[0]{z \in \mathbb{C} : \Im(z) < 0} \cup \cbr[0]{z \in \mathbb{C} : \Im(z) > 0}.
+		\end{equation*}
+		Furthermore, $G_1 \cup G_2 = \mathbb{C} \setminus \cbr[0]{0}$. But $\mathbb{C} \setminus \cbr[0]{0}$ is clearly not an elementary domain since $f(z):= \frac{1}{z}$ does not have a primitive there since
+		\begin{equation*}
+			\int_{\partial \mathbb{E}} f(\zeta) \d \zeta = 2\pi i. 
+		\end{equation*}
+		Hence the assumption that $G_1 \cap G_2 \neq \varnothing$ is connected is necessary.
+		\item
+	\end{enumerate}
+	\item 
+	\begin{definition}
+		Let $G \subseteq \mathbb{C}^\times$ be a domain. A function $\varphi \in \mathscr{C}(G;\mathbb{R})$ is said to be a \bld{branch of the argument}, if $z = \abs[0]{z}e^{i \varphi(z)}$ for all $z \in G$.
+	\end{definition}
+
+	\begin{proposition}
+		Let $G \subseteq \mathbb{C}^\times$ be a domain. There exists a branch of the argument on $G$ if and only if there exists a branch of the logarithm on $G$. 
+	\end{proposition}
+
+	\begin{proof}
+		Assume that there exists a branch of the argument $\varphi$. Thus for all $z \in G$ we have
+		\begin{equation*}
+			z = \abs[0]{z}e^{i \varphi(z)} = e^{\log\abs[0]{z} + i \varphi(z)}
+		\end{equation*}
+	\noindent and by the continuity of $\varphi$, $f(z) := \log\abs[0]{z} + i \varphi(z)$ is a branch of the logarithm. Conversly, by
+	\begin{equation*}
+		z = e^{f(z)} = e^{\Re f}e^{i \Im f} = \abs[0]{z} e^{i\Im f}
+	\end{equation*}
+	\noindent for all $z \in G$ we have that $\Im f$ is a branch of the argument on $G$, since $f$ is continuous and so is $\Im f$.
+	\end{proof}
+\end{enumerate}
+%\originalsectionstyle
+\printbibliography
+\end{document}
